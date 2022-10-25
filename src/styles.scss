@@ -135,6 +135,8 @@ header {
   }
 
   .main {
+    position: relative;
+
     &__container {
       @include flex-align-center;
       @include container-width;
@@ -185,6 +187,13 @@ header {
       }
     }
 
+    &__search {
+
+      svg {
+        pointer-events: none;
+      }
+    }
+
     &__menu {
       @include container-width;
       display: grid;
@@ -226,14 +235,19 @@ header {
   }
 
   .search {
-    // border-bottom: 8px solid $nav-red;
-    // background: #fafafa;
-    * {
-      @include default-font;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: all 500ms ease;
+
+    &.expanded {
+      display: block;
     }
 
-    &__container {
-      
+    * {
+      @include default-font;
     }
 
     &__close {
@@ -244,62 +258,58 @@ header {
     }
 
     // yext overwrites
-    .yxt-SearchBar-container {
-      border: 0;
-      border-radius: 0;
-      box-shadow: none;
-      overflow: inherit;
-      border-bottom: 8px solid $nav-red;
-      padding: 15px 0;
-    }
-    .yxt-SearchBar-form {
-      @include container-width;
-      position: relative;
+    .yxt-SearchBar {
+      height: auto;
 
-      &::before {
-        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E");
-        position: absolute;
-        left: 25px;
-        top: 60%;
-        transform: translateY(-60%);
+      &-container {
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        overflow: inherit;
+        border-bottom: 8px solid $nav-red;
+        padding: 15px 0;
       }
-      &::after {
-        content: "Search by keyword, symptom or condition";
-        position: absolute;
-        left: 60px;
-        top: 5px;
-        color: $nav-gray;
-        font-size: 12px;
-        z-index: 0;
+
+      &-form {
+        @include container-width;
+        position: relative;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background: #f7f7f5;
+        overflow: hidden;
+      }
+
+      &-input {
+        padding: 15px 30px;
+      }
+
+      &-button {
+        background: transparent;
+      }
+
+      &-buttonImage {
+        @include flex-align-center;
+        justify-content: center;
       }
     }
-    .yxt-SearchBar-autocomplete {
-      @include container-width;
-    }
-    .yxt-SearchBar-input {
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      background: #f7f7f5;
-      padding: 20px 30px 10px 60px;
-    }
+
     .yxt-AutoComplete {
       padding-bottom: 0;
 
       &::before {
         content: none;
       }
-    }
-    .yxt-SearchBar-button {
-      display: none;
-    }
-    .yxt-AutoComplete-results {
-      padding: 20px 0;
 
-      li {
-        padding: 10px 20px;
-
-        &:hover {
-          background: transparent;
+      &-results {
+        @include container-width;
+        padding: 20px 0;
+  
+        li {
+          padding: 10px 20px;
+  
+          &:hover {
+            background: transparent;
+          }
         }
       }
     }

@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://assets.sitescdn.net/answers-search-bar/v1.0/answers.css" />
     <link rel="stylesheet" href="./styles.scss" />
   </head>
   <body>
@@ -41,7 +42,7 @@
       </div>
       <!-- main nav -->
       <div class="main">
-        <div class="main__container" style="display:none;">
+        <div class="main__container">
           <div class="main__nav">
             <div class="main__links">
               <a href="#" class="main__link">Find a Doctor</a>
@@ -121,14 +122,40 @@
         </div>
         <!-- search -->
         <div class="search">
-          <div class="search__container">
-            <div class="search-bar" data-answers-config='{"autoFocus": true, "autocompleteOnLoad": true, "placeholderText": null, "clearButton": false}'></div>
-          </div>
+          <div class="search-bar"></div>
         </div>
       </div>
     </header>
     <script src="./index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/loadjs/4.2.0/loadjs.min.js" integrity="sha512-kA5njTcOKIwpz6cEPl//I31UH3ivohgL+WSVjdO/iMQWbuzHqxuAdPjRvLEHXTa+M/4AtZNMI6aOEvBtOof7Iw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="./answers-loader.js"></script>
+    <!-- answers api -->
+    <script src="https://assets.sitescdn.net/answers-search-bar/v1.0/answerstemplates.compiled.min.js"></script>
+    <script>
+      function initAnswers() {
+        ANSWERS.init({
+          apiKey: "beae47b088a08a60bd3f7192c6e18228",
+          businessId: "3586571",
+          experienceVersion: "PRODUCTION",
+          locale: "en",
+          experienceKey: "cedars-sinai-answers",
+          templateBundle: TemplateBundle.default,
+          onReady: function() {
+            // init components
+            this.addComponent("SearchBar", {
+              container: ".search-bar",
+              name: "search_form",
+              redirectUrl: "/search.html",
+              placeholderText: 'Search by Keyword, Symptom, or Condition',
+              customIconUrl: './Arrow_Right.svg',
+              autoFocus: true,
+              autocompleteOnLoad: true,
+              clearButton: false
+            });
+          },
+        });
+      }
+    </script>
+    <script
+      src="https://assets.sitescdn.net/answers-search-bar/v1.0/answers.min.js" onload="ANSWERS.domReady(initAnswers)" async defer></script>
   </body>
 </html>
