@@ -60,7 +60,7 @@
             </button>
           </div>
         </div>
-        <div class="main__flyout" style="display:block;">
+        <div class="main__flyout" style="display:none;">
           <div class="main__header">
             <div class="main__title">Specialties</div>
             <div class="main__close">
@@ -131,7 +131,7 @@
     <!-- answers api -->
     <script src="https://assets.sitescdn.net/answers-search-bar/v1.0/answerstemplates.compiled.min.js"></script>
     <script>
-      function initAnswers() {
+      function initAnswers () {
         ANSWERS.init({
           apiKey: "beae47b088a08a60bd3f7192c6e18228",
           businessId: "3586571",
@@ -139,7 +139,7 @@
           locale: "en",
           experienceKey: "cedars-sinai-answers",
           templateBundle: TemplateBundle.default,
-          onReady: function() {
+          onReady: function () {
             // init components
             this.addComponent("SearchBar", {
               container: ".search-bar",
@@ -152,6 +152,9 @@
               clearButton: false
             });
           },
+          onStateChange: function (e) {
+            console.log("event", e);
+          }
         });
       }
     </script>
