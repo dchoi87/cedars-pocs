@@ -1,6 +1,13 @@
 body {
   margin: 0;
 }
+.container {
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
 
 // variables
 $nav-black: #191919;
@@ -246,13 +253,17 @@ header {
   }
 
   .search {
+    position: absolute;
+    top: -1000px;
+    left: 0;
     width: 100%;
     opacity: 0;
 
     &.expanded {
+      top: 0;
       opacity: 1;
       transform-origin: 50% 0;
-      animation: slide-down .2s linear;
+      animation: slide-down .3s linear;
     }
 
     * {
@@ -304,8 +315,8 @@ header {
 
     .yxt-AutoComplete {
       padding-bottom: 0;
-      transform-origin: 50% 0;
-      animation: slide-down .1s linear;
+      // transform-origin: 50% 0;
+      // animation: slide-down .1s linear;
 
       &::before {
         content: none;

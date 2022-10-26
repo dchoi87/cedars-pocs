@@ -10,10 +10,10 @@ window.addEventListener("DOMContentLoaded", function () {
       container.classList.add("expanded");
       document.querySelector(".yxt-SearchBar-input").focus();
 
-      main.style.display = 'none';
+      // main.style.display = 'none';
     } else {
       container.classList.remove("expanded");
-      main.style.display = '';
+      // main.style.display = '';
     }
   });
 });
