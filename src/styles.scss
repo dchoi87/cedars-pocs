@@ -310,6 +310,10 @@ header {
 
       &-wrapper {
         min-height: 252px;
+
+        &[aria-expanded='true'] {
+          min-height: auto;
+        }
       }
 
       &::before {
