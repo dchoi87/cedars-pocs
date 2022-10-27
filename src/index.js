@@ -1,19 +1,38 @@
 window.addEventListener("DOMContentLoaded", function () {
   var container = document.querySelector(".search");
+  var button = document.querySelector(".main__search button");
+
+  button.addEventListener("click", function (event) {
+    container.classList.add("expanded");
+    document.querySelector(".yxt-SearchBar-input").focus();
+  });
 
   document.addEventListener("click", function (event) {
-    var button = this.querySelector(".main__search button");
-    var input = this.querySelector(".yxt-SearchBar-input");
-    var main = this.querySelector(".main__container");
-
-    if (button.contains(event.target) || input.contains(event.target)) {
-      container.classList.add("expanded");
-      document.querySelector(".yxt-SearchBar-input").focus();
-
-      // main.style.display = 'none';
-    } else {
+    if (!event.target.closest(".main__search button, .yxt-SearchBar-input, .yxt-SearchBar-autocomplete")) {
+      // guard?
       container.classList.remove("expanded");
-      // main.style.display = '';
     }
   });
+  
 });
+
+// const targetNode = document.querySelector('.yxt-AutoComplete-wrapper');
+
+// console.log(targetNode)
+
+// const config = { attributes: true, childList: true, subtree: false };
+
+// const callback = (mutationList, observer) => {
+//   console.log(mutationList)
+//   // for (const mutation of mutationList) {
+//   //   if (mutation.type === 'childList') {
+//   //     console.log('A child node has been added or removed.');
+//   //   } else if (mutation.type === 'attributes') {
+//   //     console.log(`The ${mutation.attributeName} attribute was modified.`);
+//   //   }
+//   // }
+// };
+
+// const observer = new MutationObserver(callback);
+
+// observer.observe(targetNode, config);
