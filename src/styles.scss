@@ -2,7 +2,6 @@ body {
   margin: 0;
 }
 .container {
-
   img {
     width: 100%;
     height: auto;
@@ -28,6 +27,7 @@ $nav-red: #dc1e34;
     font-family: inherit;
     font-size: inherit;
     cursor: pointer;
+    padding: 0 5px;
   }
 
   svg {
@@ -46,6 +46,11 @@ $nav-red: #dc1e34;
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 600;
   letter-spacing: 0.025em;
+  color: $nav-black;
+}
+
+@mixin header-font {
+  font-family: 'Lora', serif;
   color: $nav-black;
 }
 
@@ -103,9 +108,15 @@ header {
     &__container {
       @include container-width;
       display: flex;
+      // flex-flow: wrap;
+      justify-content: space-between;
       gap: 30px;
-      padding: 8px;
-      
+      padding: 15px;
+
+      @include media-tablet {
+        flex-flow: unset;
+        padding: 8px;
+      }
     }
 
     &__logo {
@@ -114,7 +125,11 @@ header {
       }
 
       img {
-        width: 150px;
+        width: 100px;
+
+        @include media-tablet {
+          width: 150px;
+        }
       }
     }
 
@@ -122,6 +137,11 @@ header {
       @include flex-align-center;
       justify-content: space-between;
       width: 100%;
+      display: none;
+
+      @include media-tablet {
+        display: inherit;
+      }
     }
     
     &__links {
@@ -160,34 +180,79 @@ header {
       @include flex-align-center;
       gap: 10px;
     }
+
+    &__mobile-nav {
+      @include flex-align-center;
+      gap: 10px;
+
+      @include media-tablet {
+        display: none;
+      }
+    }
   }
 
   .main {
     position: relative;
 
     &__container {
-      @include flex-align-center;
       @include container-width;
-      justify-content: space-between;
-      padding: 30px 0;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+
+      @include media-tablet {
+        align-items: center;
+        flex-direction: unset;
+        justify-content: space-between;
+        padding: 30px 0;
+      }
+    }
+
+    &__mobile-header {
+      @include header-font;
+      margin: 0;
+
+      @include media-tablet {
+        display: none;
+      }
+    }
+
+    &__nav {
+      padding: 30px 20px;
+
+      @include media-tablet {
+        padding: 0;
+      }
     }
 
     &__links {
       display: flex;
-      gap: 50px;
+      flex-direction: column;
+      gap: 30px;
       height: 100%;
       font-size: 18px;
+
+      @include media-tablet {
+        flex-direction: unset;
+        gap: 50px;
+      }
     }
 
     &__link {
       @include link;
 
+      &:hover {
+        color: $nav-red;
+      }
+
       svg {
         color: $nav-red;
       }
 
-      &:hover {
-        color: $nav-red;
+      &--mobile {
+        @include media-tablet {
+          display: none;
+        }
       }
     }
 
@@ -205,7 +270,7 @@ header {
     }
 
     &__title {
-      font-family: 'Lora', serif;
+      @include header-font;
       font-size: 42px;
     }
 
@@ -216,6 +281,11 @@ header {
     }
 
     &__search {
+      display: none;
+
+      @include media-tablet {
+        display: unset;
+      }
 
       svg {
         pointer-events: none;
