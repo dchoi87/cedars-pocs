@@ -279,7 +279,6 @@ header {
         overflow: inherit;
         border-bottom: 8px solid $nav-red;
         padding: 15px 0;
-        // min-height: 350px;
       }
 
       &-form {
@@ -297,6 +296,10 @@ header {
 
       &-button {
         background: transparent;
+
+        &:focus {
+          background: $nav-gray-light;
+        }
       }
 
       &-buttonImage {
