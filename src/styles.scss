@@ -49,19 +49,40 @@ $nav-red: #dc1e34;
   color: $nav-black;
 }
 
+@mixin media-tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+@mixin media-desktop-sm {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+@mixin media-desktop-md {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin media-desktop-lg {
+  @media (min-width: 1400px) {
+    @content;
+  }
+}
+
 @mixin container-width {
   margin: 0 auto;
 
-  @media (min-width: 768px) {
+  @include media-tablet {
     max-width: 750px;
   }
-  @media (min-width: 992px) {
+  @include media-desktop-sm {
     max-width: 970px;
   }
-  @media (min-width: 1200px) {
+  @include media-desktop-md {
     max-width: 1170px;
   }
-  @media (min-width: 1400px) {
+  @include media-desktop-lg {
     max-width: 1366px;
   }
 }
