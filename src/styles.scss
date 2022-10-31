@@ -256,7 +256,7 @@ header {
       }
 
       svg {
-        color: $nav-red;
+        fill: $nav-red;
       }
 
       &--mobile {
@@ -282,7 +282,7 @@ header {
         justify-content: space-between;
 
         svg {
-          color: $nav-black;
+          fill: $nav-black;
         }
       }
     }
@@ -358,7 +358,7 @@ header {
           @include link;
 
           svg {
-            color: $nav-red;
+            fill: $nav-red;
           }
         }
       }
