@@ -13,6 +13,7 @@ $nav-black: #191919;
 $nav-gray: #707078;
 $nav-gray-light: #e8e8e8;
 $nav-red: #dc1e34;
+$nav-beige: #dcd8d4;
 
 // mixins
 @mixin normalize {
@@ -198,7 +199,7 @@ header {
       @include container-width;
       display: flex;
       flex-direction: column;
-      padding: 30px;
+      padding: 30px 0 0;
 
       @include media-tablet {
         align-items: center;
@@ -210,7 +211,7 @@ header {
 
     &__mobile-header {
       @include header-font;
-      margin: 0;
+      margin: 0 30px;
 
       @include media-tablet {
         display: none;
@@ -218,7 +219,7 @@ header {
     }
 
     &__nav {
-      padding: 30px 20px;
+      padding: 30px 50px 50px;
 
       @include media-tablet {
         padding: 0;
@@ -252,6 +253,27 @@ header {
       &--mobile {
         @include media-tablet {
           display: none;
+        }
+      }
+    }
+
+    &__utility {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      background: $nav-beige;
+      padding: 30px 50px;
+
+      @include media-tablet {
+        display: none;
+      }
+
+      &-link {
+        @include flex-align-center;
+        justify-content: space-between;
+
+        svg {
+          color: $nav-black;
         }
       }
     }
