@@ -415,11 +415,16 @@ header {
 
       &-form {
         @include container-width;
+        margin: 0 15px;
         position: relative;
         border: 1px solid #ccc;
         border-radius: 10px;
         background: #f7f7f5;
         overflow: hidden;
+
+        @include media-tablet {
+          margin: 0 auto;
+        }
       }
 
       &-input {
@@ -457,7 +462,11 @@ header {
 
       &-results {
         @include container-width;
-        padding: 20px 0;
+        padding: 20px;
+
+        @include media-tablet {
+          padding: 20px 0;
+        }
   
         li {
           padding: 10px 20px;
