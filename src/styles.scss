@@ -304,6 +304,12 @@ header {
     }
 
     &__flyout {
+      display: none;
+      background: #fff;
+      position: absolute;
+      top: 86px;
+      left: 0;
+      right: 0;
       border-bottom: 8px solid $nav-red;
     }
 
