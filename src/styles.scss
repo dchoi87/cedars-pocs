@@ -194,11 +194,17 @@ header {
   }
 
   .main {
-    position: absolute;
-    inset: 63px 0 0;
+    display: none;
     background: $nav-white;
 
+    &.expanded {
+      display: block;
+      position: absolute;
+      inset: 63px 0 0;
+    }
+
     @include media-tablet {
+      display: block;
       position: relative;
       inset: auto;
     }
@@ -375,7 +381,7 @@ header {
 
   .search {
     position: absolute;
-    top: 0;
+    top: 63px;
     left: 0;
     width: 100%;
     opacity: 0;
@@ -383,6 +389,10 @@ header {
     overflow: hidden;
     transition: ease-in-out opacity .25s;
     will-change: opacity;
+
+    @include media-tablet {
+      top: 65px;
+    }
 
     &.expanded {
       opacity: 1;
@@ -394,8 +404,7 @@ header {
     }
 
     &__close {
-      display: flex;
-      align-items: center;
+      @include flex-align-center;
       gap: 5px;
       margin-left: 10px;
     }

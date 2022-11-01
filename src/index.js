@@ -31,7 +31,19 @@ window.addEventListener("DOMContentLoaded", function () {
   });
   // mobile menu
   mobileMenuBtn.addEventListener("click", function (event) {
-    console.log(event.currentTarget)
+    var main = document.querySelector(".main");
+
+    if (main.matches(".expanded")) {
+      main.classList.remove("expanded");
+      this.innerHTML = `<svg>
+        <use xlink:href="#icon-menu"></use>
+      </svg>`;
+    } else {
+      main.classList.add("expanded");
+      this.innerHTML = `<svg>
+        <use xlink:href="#icon-close"></use>
+      </svg>`;
+    }
   });
 
 });
