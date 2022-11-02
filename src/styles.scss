@@ -386,23 +386,37 @@ header {
   }
 
   .search {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 63px;
     left: 0;
+    bottom: 0;
     width: 100%;
     opacity: 0;
-    max-height: 0;
     overflow: hidden;
     transition: ease-in-out opacity .25s;
     will-change: opacity;
 
+    &-bar {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
     @include media-tablet {
       top: 65px;
+      bottom: auto;
+      max-height: 0;
     }
 
     &.expanded {
       opacity: 1;
-      max-height: 1000px;
+      max-height: none;
+      
+      @include media-tablet {
+        max-height: 1000px;
+      }
     }
 
     * {
@@ -417,15 +431,23 @@ header {
 
     // yext overwrites
     .yxt-SearchBar {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
       height: auto;
 
       &-container {
+        flex-grow: 1;
         border: 0;
         border-radius: 0;
         box-shadow: none;
         overflow: inherit;
-        border-bottom: 8px solid $nav-red;
         padding: 15px 0;
+
+        @include media-tablet {
+          max-height: 1000px;
+          border-bottom: 8px solid $nav-red;
+        }
       }
 
       &-form {
