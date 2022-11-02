@@ -191,6 +191,28 @@ header {
         display: none;
       }
     }
+
+    &__search-btn {
+      .icon-close {
+        display: none;
+      }
+
+      &.active {
+        .icon-search {
+          display: none;
+        }
+
+        .icon-close {
+          display: block;
+        }
+      }
+    }
+
+    &__menu-btn {
+      &.disabled {
+        display: none;
+      }
+    }
   }
 
   .main {
