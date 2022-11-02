@@ -302,6 +302,10 @@ header {
       }
 
       &--mobile {
+        &:hover {
+          color: $nav-red;
+        }
+        
         @include media-tablet {
           display: none;
         }
@@ -433,6 +437,7 @@ header {
     overflow: hidden;
     transition: ease-in-out opacity .25s;
     will-change: opacity;
+    max-height: 0;
 
     &-bar {
       display: flex;
@@ -443,7 +448,6 @@ header {
     @include media-tablet {
       top: 65px;
       bottom: auto;
-      max-height: 0;
     }
 
     &.expanded {

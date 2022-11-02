@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   var container = document.querySelector(".search");
   var desktopSearchBtn = document.querySelector(".main__search-btn");
   var mobileSearchBtn = document.querySelector(".utility__search-btn");
@@ -37,6 +37,8 @@ window.addEventListener("DOMContentLoaded", function () {
     var key = event.key;
     if (key === "Escape") {
       container.classList.remove("expanded");
+      mobileSearchBtn.classList.remove("active");
+      mobileMenuBtn.classList.remove("disabled");
     }
   });
   // mobile menu
