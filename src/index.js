@@ -28,6 +28,7 @@ window.addEventListener("DOMContentLoaded", function () {
       if (container.matches(".expanded")) {
         container.classList.remove("expanded");
         mobileSearchBtn.classList.remove("active");
+        mobileMenuBtn.classList.remove("disabled");
       }
     }
   });
@@ -44,14 +45,10 @@ window.addEventListener("DOMContentLoaded", function () {
 
     if (main.matches(".expanded")) {
       main.classList.remove("expanded");
-      this.innerHTML = `<svg>
-        <use xlink:href="#icon-menu"></use>
-      </svg>`;
+      this.classList.remove("active");
     } else {
       main.classList.add("expanded");
-      this.innerHTML = `<svg>
-        <use xlink:href="#icon-close"></use>
-      </svg>`;
+      this.classList.add("active");
     }
   });
 

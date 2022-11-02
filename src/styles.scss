@@ -209,6 +209,20 @@ header {
     }
 
     &__menu-btn {
+      .icon-close {
+        display: none;
+      }
+
+      &.active {
+        .icon-menu {
+          display: none;
+        }
+
+        .icon-close {
+          display: block;
+        }
+      }
+
       &.disabled {
         display: none;
       }
