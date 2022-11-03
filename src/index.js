@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var desktopSearchBtn = document.querySelector(".main__search-btn");
   var mobileSearchBtn = document.querySelector(".utility__search-btn");
   var mobileMenuBtn = document.querySelector(".utility__menu-btn");
+  var mainLinks = document.querySelector(".main__links");
 
   // desktop search
   desktopSearchBtn.addEventListener("click", function () {
@@ -42,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
   // mobile menu
-  mobileMenuBtn.addEventListener("click", function (event) {
+  mobileMenuBtn.addEventListener("click", function () {
     var main = document.querySelector(".main");
 
     if (main.matches(".expanded")) {
@@ -53,5 +54,22 @@ document.addEventListener("DOMContentLoaded", function () {
       this.classList.add("active");
     }
   });
-
+  // main menu
+  mainLinks.addEventListener("click", function (event) {
+    if (event.target.dataset.id) {
+      var section = document.querySelector(`.main__section[data-id='${event.target.dataset.id}']`);
+      var expanded = document.querySelector(".main__section.expanded");
+      var active = this.querySelector(".active");
+      // section
+      if (expanded) {
+        expanded.classList.remove("expanded");
+      }
+      section.classList.add("expanded");
+      // link
+      if (active) {
+        active.classList.remove("active");
+      }
+      event.target.classList.add("active");
+    }
+  });
 });

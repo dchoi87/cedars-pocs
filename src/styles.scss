@@ -159,7 +159,8 @@ header {
       position: relative;
       height: 100%;
 
-      &:hover {
+      &:hover,
+      &.active {
         color: $nav-black;
         
         &::after {
@@ -180,7 +181,7 @@ header {
 
     &__language {
       @include flex-align-center;
-      gap: 10px;
+      gap: 5px;
     }
 
     &__mobile-nav {
@@ -293,7 +294,8 @@ header {
     &__link {
       @include link;
 
-      &:hover {
+      &:hover,
+      &.active {
         color: $nav-red;
       }
 
@@ -305,7 +307,7 @@ header {
         &:hover {
           color: $nav-red;
         }
-        
+
         @include media-tablet {
           display: none;
         }
@@ -344,13 +346,20 @@ header {
     }
 
     &__flyout {
-      display: none;
       background: #fff;
       position: absolute;
       top: 86px;
       left: 0;
       right: 0;
+    }
+    
+    &__section {
+      display: none;
       border-bottom: 8px solid $nav-red;
+
+      &.expanded {
+        display: block;
+      }
     }
 
     &__header {
@@ -358,7 +367,7 @@ header {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
-      padding: 30px 0;
+      padding: 15px 0 30px;
       border-bottom: 1px solid $nav-gray-light;
     }
 
@@ -392,7 +401,7 @@ header {
       padding: 50px 0;
     }
 
-    &__section {
+    &__column {
 
       &--cta {
         display: grid;

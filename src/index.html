@@ -40,7 +40,7 @@
           </div>
           <div class="utility__nav">
             <div class="utility__links">
-              <a href="#" class="utility__link">Patients</a>
+              <a href="#" class="utility__link active">Patients</a>
               <a href="#" class="utility__link">Research</a>
               <a href="#" class="utility__link">Education</a>
               <a href="#" class="utility__link">For Providers</a>
@@ -66,9 +66,9 @@
             <div class="main__links">
               <a href="#" class="main__link--mobile">Home</a>
               <a href="#" class="main__link">Find a Doctor</a>
-              <a href="#" class="main__link">Locations</a>
-              <a href="#" class="main__link">Specialties</a>
-              <a href="#" class="main__link">Record & Billing</a>
+              <a href="#" class="main__link" data-id="locations">Locations</a>
+              <a href="#" class="main__link" data-id="specialties">Specialties</a>
+              <a href="#" class="main__link" data-id="records-billing">Records & Billing</a>
               <a href="#" class="main__link">My CS-Link</a>
             </div>
           </div>
@@ -116,62 +116,139 @@
           </div>
         </div>
         <div class="main__flyout">
-          <div class="main__header">
-            <div class="main__title">Specialties</div>
-            <div class="main__close">
-              <button>
-                Close
-                <svg class="icon-close">
-                  <use xlink:href="#icon-close"></use>
-                </svg>
-              </button>
+          <!-- locations -->
+          <div class="main__section" data-id="locations">
+            <div class="main__header">
+              <div class="main__title">Locations</div>
+              <div class="main__close">
+                <button class="main__close-btn">
+                  Close
+                  <svg class="icon-close">
+                    <use xlink:href="#icon-close"></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="main__menu">
+              <div class="main__column">
+                <div class="main__grid">
+                  <a href="#" class="main__link">
+                    See All Locations
+                    <svg class="icon-arrow">
+                      <use xlink:href="#icon-arrow"></use>
+                    </svg>
+                  </a>
+                  <a href="#" class="main__link">Primary Care</a>
+                  <a href="#" class="main__link">Urgent Care Facilities</a>
+                  <a href="#" class="main__link">Emergency Rooms</a>
+                  <a href="#" class="main__link">Surgery Centers</a>
+                  <a href="#" class="main__link">Medical Offices</a>
+                  <a href="#" class="main__link">Imaging Facilities</a>
+                  <a href="#" class="main__link">Labs</a>
+                </div>
+              </div>
+              <div class="main__column--cta">
+                <a href="#" class="main__cta">
+                  <img src="https://fakeimg.pl/800x440/cccccc,128/7d7d7d,255/?text=Img&font=lobster" alt="placeholder" />
+                  <span>
+                    Find a Location
+                    <svg class="icon-arrow">
+                      <use xlink:href="#icon-arrow"></use>
+                    </svg>
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
-          <div class="main__menu">
-            <div class="main__section">
-              <div class="main__grid">
-                <a href="#" class="main__link">
-                  Browse All Specialties
-                  <svg class="icon-arrow">
-                    <use xlink:href="#icon-arrow"></use>
+          <!-- specialties -->
+          <div class="main__section" data-id="specialties">
+            <div class="main__header">
+              <div class="main__title">Specialties</div>
+              <div class="main__close">
+                <button class="main__close-btn">
+                  Close
+                  <svg class="icon-close">
+                    <use xlink:href="#icon-close"></use>
                   </svg>
-                </a>
-                <a href="#" class="main__link">Cancer</a>
-                <a href="#" class="main__link">Diabetes &amp; Endocrinology</a>
-                <a href="#" class="main__link">Digestive &amp; Liver Diseases</a>
-                <a href="#" class="main__link">Ear, Nose & Throat</a>
-                <a href="#" class="main__link">Guerin Children's</a>
-                <a href="#" class="main__link">Gynecology</a>
-                <a href="#" class="main__link">Heart</a>
-                <a href="#" class="main__link">Imaging (CT Scan, MRI)</a>
-                <a href="#" class="main__link">Lung</a>
-                <a href="#" class="main__link">Neurology & Neurosurgery</a>
-                <a href="#" class="main__link">Obstetrics/Maternity</a>
+                </button>
               </div>
             </div>
-            <!-- <div class="main__section">
-              <div class="main__grid">
-                <a href="#" class="main__link">Orthopedics</a>
-                <a href="#" class="main__link">Pain Center</a>
-                <a href="#" class="main__link">Primary Care</a>
-                <a href="#" class="main__link">Spine Center</a>
-                <a href="#" class="main__link">Surgery</a>
-                <a href="#" class="main__link">Transplant</a>
-                <a href="#" class="main__link">Urgent Care</a>
-                <a href="#" class="main__link">Urology</a>
-                <a href="#" class="main__link">Women's Health</a>
+            <div class="main__menu">
+              <div class="main__column">
+                <div class="main__grid">
+                  <a href="#" class="main__link">
+                    Browse All Specialties
+                    <svg class="icon-arrow">
+                      <use xlink:href="#icon-arrow"></use>
+                    </svg>
+                  </a>
+                  <a href="#" class="main__link">Cancer</a>
+                  <a href="#" class="main__link">Diabetes &amp; Endocrinology</a>
+                  <a href="#" class="main__link">Digestive &amp; Liver Diseases</a>
+                  <a href="#" class="main__link">Ear, Nose & Throat</a>
+                  <a href="#" class="main__link">Guerin Children's</a>
+                  <a href="#" class="main__link">Gynecology</a>
+                  <a href="#" class="main__link">Heart</a>
+                  <a href="#" class="main__link">Imaging (CT Scan, MRI)</a>
+                  <a href="#" class="main__link">Lung</a>
+                  <a href="#" class="main__link">Neurology & Neurosurgery</a>
+                  <a href="#" class="main__link">Obstetrics/Maternity</a>
+                </div>
               </div>
-            </div> -->
-            <div class="main__section--cta">
-              <a href="#" class="main__cta">
-                <img src="https://fakeimg.pl/800x440/cccccc,128/7d7d7d,255/?text=Img&font=lobster" alt="placeholder" />
-                <span>
-                  Lorem Ipsum
-                  <svg class="icon-arrow">
-                    <use xlink:href="#icon-arrow"></use>
+              <div class="main__column">
+                <div class="main__grid">
+                  <a href="#" class="main__link">Orthopedics</a>
+                  <a href="#" class="main__link">Pain Center</a>
+                  <a href="#" class="main__link">Primary Care</a>
+                  <a href="#" class="main__link">Spine Center</a>
+                  <a href="#" class="main__link">Surgery</a>
+                  <a href="#" class="main__link">Transplant</a>
+                  <a href="#" class="main__link">Urgent Care</a>
+                  <a href="#" class="main__link">Urology</a>
+                  <a href="#" class="main__link">Women's Health</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- records & billing -->
+          <div class="main__section" data-id="records-billing">
+            <div class="main__header">
+              <div class="main__title">Records & Billing</div>
+              <div class="main__close">
+                <button class="main__close-btn">
+                  Close
+                  <svg class="icon-close">
+                    <use xlink:href="#icon-close"></use>
                   </svg>
-                </span>
-              </a>
+                </button>
+              </div>
+            </div>
+            <div class="main__menu">
+              <div class="main__column">
+                <div class="main__grid">
+                  <a href="#" class="main__link">
+                    See All Records & Billing
+                    <svg class="icon-arrow">
+                      <use xlink:href="#icon-arrow"></use>
+                    </svg>
+                  </a>
+                  <a href="#" class="main__link">Medical Records Request</a>
+                  <a href="#" class="main__link">Insurance &amp; Billing</a>
+                  <a href="#" class="main__link">Pay Your Bill</a>
+                  <a href="#" class="main__link">Advanced Healthcare Directive</a>
+                </div>
+              </div>
+              <div class="main__column--cta">
+                <a href="#" class="main__cta">
+                  <img src="https://fakeimg.pl/800x440/cccccc,128/7d7d7d,255/?text=Img&font=lobster" alt="placeholder" />
+                  <span>
+                    Initiate a Request
+                    <svg class="icon-arrow">
+                      <use xlink:href="#icon-arrow"></use>
+                    </svg>
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -205,14 +282,11 @@
               redirectUrl: "/search.html",
               placeholderText: 'Search by Keyword, Symptom, or Condition',
               customIconUrl: './Arrow_Right.svg',
-              // autoFocus: true,
-              // autocompleteOnLoad: true,
               clearButton: false
             });
           },
           onStateChange: function (e) {
             console.log("event", e);
-            
           }
         });
       }
