@@ -32,6 +32,14 @@ document.addEventListener("DOMContentLoaded", function () {
         mobileMenuBtn.classList.remove("disabled");
       }
     }
+
+    if (!event.target.closest(".main__section, .main__container, .utility")) {
+      var expanded = document.querySelector(".main__section.expanded");
+      if (expanded) {
+        document.querySelector(".main__section.expanded").classList.remove("expanded");
+        document.querySelector(".main__link.active").classList.remove("active");
+      }
+    }
   });
   // exit search on esc
   document.addEventListener("keydown", function(event) {
@@ -72,4 +80,12 @@ document.addEventListener("DOMContentLoaded", function () {
       event.target.classList.add("active");
     }
   });
+  // section close
+  document.querySelectorAll(".main__close-btn").forEach(function(el) {
+    el.addEventListener("click", function (event) {
+      document.querySelector(".main__section.expanded").classList.remove("expanded");
+      document.querySelector(".main__link.active").classList.remove("active");
+    });  
+  })
+  
 });
