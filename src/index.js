@@ -1,3 +1,5 @@
+var isMobile = window.innerWidth < 768;
+
 var navigation = {
   init: function () {
     var self = this;
@@ -12,9 +14,9 @@ var navigation = {
       var isSearchExpanded = self.searchContainer.matches(".expanded");
 
       if (isSearchExpanded) {
-        self.closeSeach(true);
+        self.closeSeach();
       } else {
-        self.expandSearch(true);
+        self.expandSearch();
       }
     });
     // document click to close
@@ -23,7 +25,7 @@ var navigation = {
 
       if (!event.target.closest(".main__search-btn, .utility__search-btn, .yxt-SearchBar-input, .yxt-SearchBar-autocomplete")) {
         if (isSearchExpanded) {
-          self.closeSeach(true);
+          self.closeSeach();
         }
       }
       if (!event.target.closest(".main__section, .main__container, .utility")) {
@@ -51,21 +53,26 @@ var navigation = {
       el.addEventListener("click", function () {
         self.closeMenu();
       });
-    })
+    });
+    // window resize event
+    window.addEventListener("resize", function() {
+      isMobile = window.innerWidth < 768;
+    });
   },
-  expandSearch: function (isMobile) {
+  expandSearch: function () {
     var input = document.querySelector(".yxt-SearchBar-input");
 
     this.searchContainer.classList.add("expanded");
-    this.overlay.style.display = "block";
     input.focus();
 
     if (isMobile) {
       this.mobileSearchBtn.classList.add("active");
       this.mobileMenuBtn.classList.add("disabled");
+    } else {
+      this.overlay.style.display = "block";
     }
   },
-  closeSeach: function (isMobile) {
+  closeSeach: function () {
     this.searchContainer.classList.remove("expanded");
     this.overlay.style.display = "none";
 
@@ -90,7 +97,12 @@ var navigation = {
         active.classList.remove("active");
       }
       target.classList.add("active");
-      this.overlay.style.display = "block";
+
+      console.log(isMobile);
+
+      if (!isMobile) {
+        this.overlay.style.display = "block";
+      }
     }
   },
   closeMenu: function () {
