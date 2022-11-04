@@ -21,15 +21,17 @@ var navigation = {
     });
     // document click to close
     document.addEventListener("click", function (event) {
-      var isSearchExpanded = self.searchContainer.matches(".expanded");
-
       if (!event.target.closest(".main__search-btn, .utility__search-btn, .yxt-SearchBar-input, .yxt-SearchBar-autocomplete")) {
+        var isSearchExpanded = self.searchContainer.matches(".expanded");
         if (isSearchExpanded) {
           self.closeSeach();
         }
       }
       if (!event.target.closest(".main__section, .main__container, .utility")) {
         self.closeMenu();
+      }
+      if (!event.target.closest(".utility__language, .language")) {
+        self.closeLanguage();
       }
     });
     // escape to close
@@ -53,6 +55,14 @@ var navigation = {
       el.addEventListener("click", function () {
         self.closeMenu();
       });
+    });
+    // language
+    this.languageBtn.addEventListener("click", function (event) {
+      event.preventDefault();
+      self.expandLanguage();
+    });
+    this.languageCloseBtn.addEventListener("click", function (event) {
+      self.closeLanguage();
     });
     // window resize event
     window.addEventListener("resize", function() {
@@ -98,8 +108,6 @@ var navigation = {
       }
       target.classList.add("active");
 
-      console.log(isMobile);
-
       if (!isMobile) {
         this.overlay.style.display = "block";
       }
@@ -124,7 +132,16 @@ var navigation = {
       this.mobileMenuBtn.classList.add("active");
     }
   },
-
+  expandLanguage: function () {
+    this.language.classList.add("expanded");
+    this.overlay.style.display = "block";
+  },
+  closeLanguage: function () {
+    if (this.language.matches(".expanded")) {
+      this.language.classList.remove("expanded");
+      this.overlay.style.display = "none";
+    }
+  },
   header: document.querySelector("header.header"),
   searchContainer: document.querySelector(".search"),
   searchBtn: document.querySelector(".main__search-btn"),
@@ -134,5 +151,8 @@ var navigation = {
   mainLinks: document.querySelector(".main__links"),
   mainCloseBtns: document.querySelectorAll(".main__close-btn"),
   overlay: document.querySelector(".overlay"),
+  language: document.querySelector(".language"),
+  languageBtn: document.querySelector(".utility__language"),
+  languageCloseBtn: document.querySelector(".language__close-btn"),
 }
 navigation.init();
