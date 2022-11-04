@@ -57,9 +57,11 @@ var navigation = {
       });
     });
     // language
-    this.languageBtn.addEventListener("click", function (event) {
-      event.preventDefault();
-      self.expandLanguage();
+    this.languageBtn.forEach(function(el) {
+      el.addEventListener("click", function (event) {
+        event.preventDefault();
+        self.expandLanguage();
+      });
     });
     this.languageCloseBtn.addEventListener("click", function (event) {
       self.closeLanguage();
@@ -152,7 +154,7 @@ var navigation = {
   mainCloseBtns: document.querySelectorAll(".main__close-btn"),
   overlay: document.querySelector(".overlay"),
   language: document.querySelector(".language"),
-  languageBtn: document.querySelector(".utility__language"),
+  languageBtn: document.querySelectorAll(".utility__language"),
   languageCloseBtn: document.querySelector(".language__close-btn"),
 }
 navigation.init();
