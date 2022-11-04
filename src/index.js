@@ -19,8 +19,12 @@ var navigation = {
     });
     // document click to close
     document.addEventListener("click", function (event) {
+      var isSearchExpanded = self.searchContainer.matches(".expanded");
+
       if (!event.target.closest(".main__search-btn, .utility__search-btn, .yxt-SearchBar-input, .yxt-SearchBar-autocomplete")) {
-        self.closeSeach();
+        if (isSearchExpanded) {
+          self.closeSeach(true);
+        }
       }
       if (!event.target.closest(".main__section, .main__container, .utility")) {
         self.closeMenu();
@@ -53,6 +57,7 @@ var navigation = {
     var input = document.querySelector(".yxt-SearchBar-input");
 
     this.searchContainer.classList.add("expanded");
+    this.overlay.style.display = "block";
     input.focus();
 
     if (isMobile) {
@@ -62,6 +67,7 @@ var navigation = {
   },
   closeSeach: function (isMobile) {
     this.searchContainer.classList.remove("expanded");
+    this.overlay.style.display = "none";
 
     if (isMobile) {
       this.mobileSearchBtn.classList.remove("active");
@@ -84,6 +90,7 @@ var navigation = {
         active.classList.remove("active");
       }
       target.classList.add("active");
+      this.overlay.style.display = "block";
     }
   },
   closeMenu: function () {
@@ -93,6 +100,7 @@ var navigation = {
     if (expanded) {
       expanded.classList.remove("expanded");
       active.classList.remove("active");
+      this.overlay.style.display = "none";
     }
   },
   toggleMenu: function () {
@@ -113,5 +121,6 @@ var navigation = {
   main: document.querySelector(".main"),
   mainLinks: document.querySelector(".main__links"),
   mainCloseBtns: document.querySelectorAll(".main__close-btn"),
+  overlay: document.querySelector(".overlay"),
 }
 navigation.init();
