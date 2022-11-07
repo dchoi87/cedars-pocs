@@ -7,24 +7,39 @@ var isMobile = window.innerWidth < 768;
 var navigation = {
   init: function () {
     var self = this;
-
     if (!this.header) return;
-    // desktop search
-    this.searchBtn.addEventListener("click", function () {
-      self.expandSearch();
-    });
-    // mobile search
-    this.mobileSearchBtn.addEventListener("click", function () {
-      var isSearchExpanded = self.searchContainer.matches(".expanded");
 
-      if (isSearchExpanded) {
-        self.closeSeach();
-      } else {
+    document.addEventListener("click", function (event) {
+      // main search
+      if (event.target.matches(".main__search-btn")) {
         self.expandSearch();
       }
-    });
-    // document click to close
-    document.addEventListener("click", function (event) {
+      // mobile search
+      if (event.target.matches(".utility__search-btn")) {
+        var isSearchExpanded = self.searchContainer.matches(".expanded");
+        isSearchExpanded ? self.closeSeach() : self.expandSearch();
+      }
+      // hamburger menu
+      if (event.target.matches(".utility__menu-btn")) {
+        self.toggleMenu();
+      }
+      // flyout link
+      if (event.target.matches(".main__link")) {
+        self.expandMenu(event.target);
+      }
+      // flyout close
+      if (event.target.matches(".main__close-btn")) {
+        self.closeMenu();
+      }
+      // language
+      if (event.target.matches(".utility__language")) {
+        self.expandLanguage();
+      }
+      // language close
+      if (event.target.matches(".language__close-btn")) {
+        self.closeLanguage();
+      }
+      // click to close
       if (!event.target.closest(".main__search-btn, .utility__search-btn, .yxt-SearchBar-input, .yxt-SearchBar-autocomplete")) {
         var isSearchExpanded = self.searchContainer.matches(".expanded");
         if (isSearchExpanded) {
@@ -45,30 +60,6 @@ var navigation = {
       if (key === "Escape") {
         self.closeSeach();
       }
-    });
-    // mobile menu
-    this.mobileMenuBtn.addEventListener("click", function () {
-      self.toggleMenu();
-    });
-    // main menu
-    this.mainLinks.addEventListener("click", function (event) {
-      self.expandMenu(event.target);
-    });
-    // section close
-    this.mainCloseBtns.forEach(function(el) {
-      el.addEventListener("click", function () {
-        self.closeMenu();
-      });
-    });
-    // language
-    this.languageBtn.forEach(function(el) {
-      el.addEventListener("click", function (event) {
-        event.preventDefault();
-        self.expandLanguage();
-      });
-    });
-    this.languageCloseBtn.addEventListener("click", function (event) {
-      self.closeLanguage();
     });
     // window resize event
     window.addEventListener("resize", function() {

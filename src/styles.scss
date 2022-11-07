@@ -30,6 +30,10 @@ $nav-beige: #dcd8d4;
     font-size: inherit;
     cursor: pointer;
     padding: 0 5px;
+
+    * {
+      pointer-events: none;
+    }
   }
 
   svg {
