@@ -150,7 +150,7 @@ var navigation = {
       var isYextButton = curr.matches(".js-yext-submit") || curr.matches(".js-yxt-SearchBar-clear");
       if (!isYextButton) {
         acc.push({
-          text: curr.innerText.trim() || `Img - ${curr.dataset.dmValue}`,
+          text: curr.innerText.trim() || `Img: ${curr.dataset.dmValue}`,
           href: curr.href,
           dmCategory: curr.dataset.dmCategory,
           dmEvent: curr.dataset.dmEvent,
