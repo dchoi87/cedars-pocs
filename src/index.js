@@ -144,6 +144,25 @@ var navigation = {
       this.overlay.style.display = "none";
     }
   },
+  logDataAttribute: function () {
+    var _array = Array.from(document.querySelectorAll("header a, header button"));
+    var _data = _array.reduce(function(acc, curr) {
+      var isYextButton = curr.matches(".js-yext-submit") || curr.matches(".js-yxt-SearchBar-clear");
+      if (!isYextButton) {
+        acc.push({
+          text: curr.innerText.trim() || `Img - ${curr.dataset.dmValue}`,
+          href: curr.href,
+          dmCategory: curr.dataset.dmCategory,
+          dmEvent: curr.dataset.dmEvent,
+          dmType: curr.dataset.dmType,
+          dmValue: curr.dataset.dmValue,
+          type: curr.tagName
+        });
+      }
+      return acc;
+    }, []);
+    console.table(_data);
+  },
   header: document.querySelector("header.header"),
   searchContainer: document.querySelector(".search"),
   searchBtn: document.querySelector(".main__search-btn"),
