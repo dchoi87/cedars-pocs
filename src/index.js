@@ -72,6 +72,10 @@ var navigation = {
     // window resize event
     window.addEventListener("resize", function() {
       isMobile = window.innerWidth < 768;
+
+      if (!isMobile && self.main.matches(".expanded")) {
+        self.toggleMenu();
+      }
     });
   },
   expandSearch: function () {
