@@ -2,6 +2,7 @@ var isMobile = window.innerWidth < 768;
 
 // TODO:
 // 1. use event bubbling for all click events (may be cleaner than binding each element)
+// 2. create mutation observer for overlay
 
 var navigation = {
   init: function () {
@@ -75,6 +76,13 @@ var navigation = {
 
       if (!isMobile && self.main.matches(".expanded")) {
         self.toggleMenu();
+      }
+      if (isMobile && self.language.matches(".expanded") && !self.main.matches(".expanded")) {
+        self.toggleMenu();
+      }
+      var mainExpanded = document.querySelector(".main__section.expanded");
+      if (isMobile && mainExpanded) {
+        self.closeMenu();
       }
     });
   },
