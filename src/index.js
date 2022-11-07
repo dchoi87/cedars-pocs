@@ -1,5 +1,8 @@
 var isMobile = window.innerWidth < 768;
 
+// TODO:
+// 1. use event bubbling for all click events (may be cleaner than binding each element)
+
 var navigation = {
   init: function () {
     var self = this;
