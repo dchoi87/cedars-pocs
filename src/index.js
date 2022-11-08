@@ -1,9 +1,5 @@
 var isMobile = window.innerWidth < 768;
 
-// TODO:
-// 1. use event bubbling for all click events (may be cleaner than binding each element)
-// 2. create mutation observer for overlay
-
 var navigation = {
   init: function () {
     var self = this;
@@ -16,7 +12,8 @@ var navigation = {
       }
       // mobile search
       if (event.target.matches(".utility__search-btn")) {
-        var isSearchExpanded = self.searchContainer.matches(".expanded");
+        var header = document.querySelector("header");
+        var isSearchExpanded = header.matches(".search-expanded");
         isSearchExpanded ? self.closeSeach() : self.expandSearch();
       }
       // hamburger menu
@@ -41,10 +38,7 @@ var navigation = {
       }
       // click to close
       if (!event.target.closest(".main__search-btn, .utility__search-btn, .yxt-SearchBar-input, .yxt-SearchBar-autocomplete")) {
-        var isSearchExpanded = self.searchContainer.matches(".expanded");
-        if (isSearchExpanded) {
-          self.closeSeach();
-        }
+        self.closeSeach();
       }
       if (!event.target.closest(".main__section, .main__container, .utility")) {
         self.closeMenu();
@@ -64,91 +58,53 @@ var navigation = {
     // window resize event
     window.addEventListener("resize", function() {
       isMobile = window.innerWidth < 768;
-
-      if (!isMobile && self.main.matches(".expanded")) {
-        self.toggleMenu();
-      }
-      if (isMobile && self.language.matches(".expanded") && !self.main.matches(".expanded")) {
-        self.toggleMenu();
-      }
-      var mainExpanded = document.querySelector(".main__section.expanded");
-      if (isMobile && mainExpanded) {
-        self.closeMenu();
-      }
     });
   },
+  // search-expanded, menu-expanded, language-expanded
   expandSearch: function () {
+    var header = document.querySelector("header");
     var input = document.querySelector(".yxt-SearchBar-input");
-
-    this.searchContainer.classList.add("expanded");
+    header.classList.add("search-expanded");
     input.focus();
-
-    if (isMobile) {
-      this.mobileSearchBtn.classList.add("active");
-      this.mobileMenuBtn.classList.add("disabled");
-    } else {
-      this.overlay.style.display = "block";
-    }
   },
   closeSeach: function () {
-    this.searchContainer.classList.remove("expanded");
-    this.overlay.style.display = "none";
-
-    if (isMobile) {
-      this.mobileSearchBtn.classList.remove("active");
-      this.mobileMenuBtn.classList.remove("disabled");
-    }
+    var header = document.querySelector("header");
+    header.classList.remove("search-expanded");
   },
   expandMenu: function(target) {
+    var header = document.querySelector("header");
     var section = document.querySelector(`.main__section[data-id='${target.dataset.id}']`);
-    var expanded = document.querySelector(".main__section.expanded");
-    var active = document.querySelector(".main__link.active");
-
-    if (target.dataset.id) {
-      // section
-      if (expanded) {
-        expanded.classList.remove("expanded");
-      }
-      section.classList.add("expanded");
-      // link
-      if (active) {
-        active.classList.remove("active");
-      }
-      target.classList.add("active");
-
-      if (!isMobile) {
-        this.overlay.style.display = "block";
-      }
-    }
+    var expanded = document.querySelector(`.main__section[data-expanded="true"]`);
+    var activeLink = document.querySelector(`.main__link[aria-expanded="true"]`);
+    header.classList.add("menu-expanded");
+    expanded && expanded.setAttribute("data-expanded", false);
+    section.setAttribute("data-expanded", true);
+    activeLink && activeLink.setAttribute("aria-expanded", false);
+    target.setAttribute("aria-expanded", true);
   },
   closeMenu: function () {
-    var expanded = document.querySelector(".main__section.expanded");
-    var active = document.querySelector(".main__link.active");
-    
-    if (expanded) {
-      expanded.classList.remove("expanded");
-      active.classList.remove("active");
-      this.overlay.style.display = "none";
-    }
+    var header = document.querySelector("header");
+    var expanded = document.querySelector(`.main__section[data-expanded="true"]`);
+    var activeLink = document.querySelector(`.main__link[aria-expanded="true"]`);
+    header.classList.remove("menu-expanded");
+    expanded && expanded.setAttribute("data-expanded", false);
+    activeLink && activeLink.setAttribute("aria-expanded", false);
   },
   toggleMenu: function () {
-    if (this.main.matches(".expanded")) {
-      this.main.classList.remove("expanded");
-      this.mobileMenuBtn.classList.remove("active");
+    var header = document.querySelector("header");
+    if (header.matches(".menu-expanded")) {
+      header.classList.remove("menu-expanded");
     } else {
-      this.main.classList.add("expanded");
-      this.mobileMenuBtn.classList.add("active");
+      header.classList.add("menu-expanded");
     }
   },
   expandLanguage: function () {
-    this.language.classList.add("expanded");
-    this.overlay.style.display = "block";
+    var header = document.querySelector("header");
+    header.classList.add("language-expanded");
   },
   closeLanguage: function () {
-    if (this.language.matches(".expanded")) {
-      this.language.classList.remove("expanded");
-      this.overlay.style.display = "none";
-    }
+    var header = document.querySelector("header");
+    header.classList.remove("language-expanded");
   },
   logDataAttribute: function () {
     var _array = Array.from(document.querySelectorAll("header a, header button"));

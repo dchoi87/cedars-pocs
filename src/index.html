@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./styles.scss" />
   </head>
   <body>
+    <!-- search-expanded, menu-expanded, language-expanded -->
     <header class="header">
       <!-- utility nav -->
       <div class="utility">
@@ -66,9 +67,9 @@
             <div class="main__links">
               <a href="https://www.cedars-sinai.org" class="main__link--mobile" data-dm-event="site interaction" data-dm-category="header container" data-dm-type="link" data-dm-value="Home">Home</a>
               <a href="https://www.cedars-sinai.org/find-a-doctor.html" class="main__link" data-dm-event="site interaction" data-dm-category="header container" data-dm-type="link" data-dm-value="Find a Doctor">Find a Doctor</a>
-              <a href="#" class="main__link" data-id="locations" data-dm-event="site interaction" data-dm-category="header container" data-dm-type="link" data-dm-value="Browse Our Locations">Locations</a>
-              <a href="#" class="main__link" data-id="specialties" data-dm-event="site interaction" data-dm-category="header container" data-dm-type="link" data-dm-value="Specialties">Specialties</a>
-              <a href="#" class="main__link" data-id="records-billing" data-dm-event="site interaction" data-dm-category="header container" data-dm-type="link" data-dm-value="Records &amp; Billing">Records &amp; Billing</a>
+              <a href="#" class="main__link" data-id="locations" data-dm-event="site interaction" data-dm-category="header container" data-dm-type="link" data-dm-value="Browse Our Locations" aria-expanded="false">Locations</a>
+              <a href="#" class="main__link" data-id="specialties" data-dm-event="site interaction" data-dm-category="header container" data-dm-type="link" data-dm-value="Specialties" aria-expanded="false">Specialties</a>
+              <a href="#" class="main__link" data-id="records-billing" data-dm-event="site interaction" data-dm-category="header container" data-dm-type="link" data-dm-value="Records &amp; Billing" aria-expanded="false">Records &amp; Billing</a>
               <a href="https://www.cedars-sinai.org/mycslink.html" class="main__link" data-dm-event="site interaction" data-dm-category="header container" data-dm-type="link" data-dm-value="My CS-Link">My CS-Link</a>
             </div>
           </div>
@@ -117,7 +118,7 @@
         </div>
         <div class="main__flyout">
           <!-- locations -->
-          <div class="main__section" data-id="locations">
+          <div class="main__section" data-id="locations" data-expanded="false">
             <div class="main__header">
               <div class="main__title">Locations</div>
               <div class="main__close">
@@ -161,7 +162,7 @@
             </div>
           </div>
           <!-- specialties -->
-          <div class="main__section" data-id="specialties">
+          <div class="main__section" data-id="specialties" data-expanded="false">
             <div class="main__header">
               <div class="main__title">Specialties</div>
               <div class="main__close">
@@ -211,7 +212,7 @@
             </div>
           </div>
           <!-- records & billing -->
-          <div class="main__section" data-id="records-billing">
+          <div class="main__section" data-id="records-billing" data-expanded="false">
             <div class="main__header">
               <div class="main__title">Records &amp; Billing</div>
               <div class="main__close">
