@@ -60,41 +60,21 @@ $nav-beige: #dcd8d4;
   color: $nav-black;
 }
 
-@mixin media-tablet {
-  @media (min-width: 768px) {
-    @content;
-  }
-}
-@mixin media-desktop-sm {
-  @media (min-width: 992px) {
-    @content;
-  }
-}
-@mixin media-desktop-md {
-  @media (min-width: 1200px) {
-    @content;
-  }
-}
-@mixin media-desktop-lg {
-  @media (min-width: 1400px) {
+@mixin breakpoint-large {
+  @media (min-width: 1024px) {
     @content;
   }
 }
 
 @mixin container-width {
   margin: 0 auto;
+  padding-left: 32px;
+  padding-right: 32px;
 
-  @include media-tablet {
-    max-width: 750px;
-  }
-  @include media-desktop-sm {
-    max-width: 970px;
-  }
-  @include media-desktop-md {
-    max-width: 1170px;
-  }
-  @include media-desktop-lg {
-    max-width: 1366px;
+  @include breakpoint-large {
+    max-width: 1440px;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -117,14 +97,14 @@ header {
     &__container {
       @include container-width;
       display: flex;
-      // flex-flow: wrap;
       justify-content: space-between;
       gap: 30px;
-      padding: 15px;
+      // padding: 15px;
 
-      @include media-tablet {
+      @include breakpoint-large {
         flex-flow: unset;
-        padding: 8px;
+        padding-top: 8px;
+        padding-bottom: 8px;
       }
     }
 
@@ -136,8 +116,8 @@ header {
       img {
         width: 100px;
 
-        @include media-tablet {
-          width: 150px;
+        @include breakpoint-large {
+          width: 115px;
         }
       }
     }
@@ -148,14 +128,14 @@ header {
       width: 100%;
       display: none;
 
-      @include media-tablet {
+      @include breakpoint-large {
         display: inherit;
       }
     }
     
     &__links {
       @include flex-align-center;
-      gap: 30px;
+      gap: 32px;
       height: 100%;
       color: $nav-gray;
       font-size: 16px;
@@ -182,7 +162,7 @@ header {
 
     &__phone-lang {
       @include flex-align-center;
-      gap: 30px;
+      gap: 32px;
       font-size: 13px;
     }
 
@@ -195,7 +175,7 @@ header {
       @include flex-align-center;
       gap: 10px;
 
-      @include media-tablet {
+      @include breakpoint-large {
         display: none;
       }
     }
@@ -222,7 +202,7 @@ header {
     background: $nav-white;
     z-index: 1;
 
-    @include media-tablet {
+    @include breakpoint-large {
       display: block;
       position: relative;
       inset: auto;
@@ -234,11 +214,11 @@ header {
       flex-direction: column;
       height: 100%;
 
-      @include media-tablet {
+      @include breakpoint-large {
         align-items: center;
         flex-direction: unset;
         justify-content: space-between;
-        padding: 30px 0;
+        padding: 32px 0;
       }
     }
 
@@ -246,7 +226,7 @@ header {
       @include header-font;
       margin: 30px;
 
-      @include media-tablet {
+      @include breakpoint-large {
         display: none;
       }
     }
@@ -255,7 +235,7 @@ header {
       flex-grow: 1;
       padding: 0 50px 30px;
 
-      @include media-tablet {
+      @include breakpoint-large {
         padding: 0;
       }
     }
@@ -267,9 +247,9 @@ header {
       height: 100%;
       font-size: 18px;
 
-      @include media-tablet {
+      @include breakpoint-large {
         flex-direction: unset;
-        gap: 50px;
+        gap: 48px;
       }
     }
 
@@ -289,9 +269,16 @@ header {
           color: $nav-red;
         }
 
-        @include media-tablet {
+        @include breakpoint-large {
           display: none;
         }
+      }
+    }
+
+    &__search-btn {
+      .icon-search {
+        width: 24px;
+        height: 24px;
       }
     }
 
@@ -302,7 +289,7 @@ header {
       background: $nav-beige;
       padding: 30px 50px;
 
-      @include media-tablet {
+      @include breakpoint-large {
         display: none;
       }
 
@@ -321,7 +308,7 @@ header {
       justify-content: space-between;
       padding: 15px 30px;
 
-      @include media-tablet {
+      @include breakpoint-large {
         display: none;
       }
     }
@@ -344,7 +331,7 @@ header {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
-      padding: 15px 0 30px;
+      padding: 24px 0;
       border-bottom: 1px solid $nav-gray-light;
     }
 
@@ -362,7 +349,7 @@ header {
     &__search {
       display: none;
 
-      @include media-tablet {
+      @include breakpoint-large {
         display: unset;
       }
 
@@ -375,7 +362,8 @@ header {
       @include container-width;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      padding: 50px 0;
+      padding: 48px 0 64px;
+      gap: 24px;
     }
 
     &__column {
@@ -389,7 +377,7 @@ header {
           width: 100%;
           height: auto;
           border-radius: 10px;
-          margin-bottom: 10px;
+          margin-bottom: 16px;
         }
 
         span {
@@ -407,7 +395,7 @@ header {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(6, 1fr);
       grid-auto-flow: column;
-      row-gap: 30px;
+      gap: 32px 24px;
     }
   }
 
@@ -432,8 +420,8 @@ header {
       flex-grow: 1;
     }
 
-    @include media-tablet {
-      top: 65px;
+    @include breakpoint-large {
+      top: 54px;
       bottom: auto;
     }
 
@@ -460,9 +448,9 @@ header {
         border-radius: 0;
         box-shadow: none;
         overflow: inherit;
-        padding: 15px 0;
+        padding: 12px 0;
 
-        @include media-tablet {
+        @include breakpoint-large {
           max-height: 1000px;
           border-bottom: 8px solid $nav-red;
         }
@@ -477,13 +465,13 @@ header {
         background: #f7f7f5;
         overflow: hidden;
 
-        @include media-tablet {
+        @include breakpoint-large {
           margin: 0 auto;
         }
       }
 
       &-input {
-        padding: 15px 30px;
+        padding: 20px 24px;
       }
 
       &-button {
@@ -519,12 +507,12 @@ header {
         @include container-width;
         padding: 20px;
 
-        @include media-tablet {
-          padding: 20px 0;
+        @include breakpoint-large {
+          padding: 32px 0;
         }
   
         li {
-          padding: 10px 20px;
+          padding: 12px 24px;
   
           &:hover {
             background: transparent;
@@ -542,7 +530,7 @@ header {
     display: none;
     z-index: 2;
     
-    @include media-tablet {
+    @include breakpoint-large {
       position: relative;
       width: auto;
       z-index: 1;
@@ -552,9 +540,9 @@ header {
       z-index: 1;
       background: $nav-white;
 
-      @include media-tablet {
+      @include breakpoint-large {
         position: absolute;
-        top: -151px;
+        top: -148px;
         right: 0;
         border-bottom: 8px solid $nav-red;
         border-bottom-right-radius: 8px;
@@ -567,7 +555,7 @@ header {
     &__toolbar {
       @include flex-align-center;
       justify-content: space-between;
-      padding: 21px 20px;
+      padding: 15px 20px;
       border-bottom: 1px solid #191919;
       background: $nav-black;
       color: $nav-white;
@@ -640,7 +628,7 @@ header {
     backdrop-filter: blur(1px);
     cursor: pointer;
 
-    @include media-tablet {
+    @include breakpoint-large {
       z-index: 0;
       backdrop-filter: blur(2px);
     }
@@ -653,7 +641,7 @@ header {
       opacity: 1;
       max-height: none;
       
-      @include media-tablet {
+      @include breakpoint-large {
         max-height: 1000px;
       }
     }
@@ -673,7 +661,7 @@ header {
       display: none;
     }
 
-    @include media-tablet {
+    @include breakpoint-large {
       .overlay {
         display: block;
       }
@@ -687,7 +675,7 @@ header {
       position: absolute;
       inset: 63px 0 0;
 
-      @include media-tablet {
+      @include breakpoint-large {
         display: block;
         position: relative;
         inset: auto;
@@ -712,7 +700,7 @@ header {
       }
     }
 
-    @include media-tablet {
+    @include breakpoint-large {
       .overlay {
         display: block;
       }
@@ -728,6 +716,6 @@ header {
       display: block;
     }
 
-    @include media-tablet {}
+    @include breakpoint-large {}
   }
 }
