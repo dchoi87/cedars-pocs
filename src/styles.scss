@@ -29,7 +29,7 @@ $nav-beige: #dcd8d4;
     font-family: inherit;
     font-size: inherit;
     cursor: pointer;
-    padding: 0 5px;
+    padding: 0;
 
     * {
       pointer-events: none;
@@ -174,7 +174,7 @@ header {
 
     &__mobile-nav {
       @include flex-align-center;
-      gap: 10px;
+      gap: 16px;
 
       @include breakpoint-large {
         display: none;
@@ -526,6 +526,7 @@ header {
 
   .language {
     @include container-width;
+    padding: 0;
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -594,7 +595,8 @@ header {
       a {
         @include flex-align-center;
         gap: 10px;
-        padding: 20px 24px;
+        height: 64px;
+        padding: 0 24px;
 
         &.active {
           color: $nav-red;
