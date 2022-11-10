@@ -73,8 +73,6 @@ $nav-beige: #dcd8d4;
 
   @include breakpoint-large {
     max-width: 1440px;
-    padding-left: 0;
-    padding-right: 0;
   }
 }
 
@@ -116,9 +114,11 @@ header {
 
       img {
         width: 89px;
+        height: 28px;
 
         @include breakpoint-large {
           width: 115px;
+          height: 36px;
         }
       }
     }
@@ -214,12 +214,14 @@ header {
       display: flex;
       flex-direction: column;
       height: 100%;
+      padding-left: 0;
+      padding-right: 0;
 
       @include breakpoint-large {
         align-items: center;
         flex-direction: unset;
         justify-content: space-between;
-        padding: 32px 0;
+        padding: 32px;
       }
     }
 
@@ -323,12 +325,11 @@ header {
     }
     
     &__section {
+      @include container-width;
       display: none;
-      border-bottom: 8px solid $nav-red;
     }
 
     &__header {
-      @include container-width;
       display: flex;
       align-items: baseline;
       justify-content: space-between;
@@ -360,7 +361,6 @@ header {
     }
 
     &__menu {
-      @include container-width;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       padding: 48px 0 64px;
@@ -404,7 +404,7 @@ header {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 63px;
+    top: 73px;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -415,12 +415,6 @@ header {
     max-height: 0;
     z-index: 1;
 
-    &-bar {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
     @include breakpoint-large {
       top: 54px;
       bottom: auto;
@@ -428,6 +422,12 @@ header {
 
     * {
       @include default-font;
+    }
+
+    &-bar {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
     &__close {
@@ -449,7 +449,6 @@ header {
         border-radius: 0;
         box-shadow: none;
         overflow: inherit;
-        padding: 12px 0;
 
         @include breakpoint-large {
           max-height: 1000px;
@@ -459,24 +458,29 @@ header {
 
       &-form {
         @include container-width;
-        margin: 0 15px;
-        position: relative;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        background: #f7f7f5;
-        overflow: hidden;
+        padding-top: 24px;
 
         @include breakpoint-large {
-          margin: 0 auto;
+          padding-top: 13px;
+          padding-bottom: 13px;
         }
       }
 
       &-input {
         padding: 20px 24px;
+        border: 1px solid #ccc;
+        border-right: none;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        background: #f7f7f5;
       }
 
       &-button {
-        background: transparent;
+        border: 1px solid #ccc;
+        border-left: none;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background: #f7f7f5;
 
         &:focus {
           background: $nav-gray-light;
@@ -506,12 +510,9 @@ header {
 
       &-results {
         @include container-width;
-        padding: 20px;
+        padding-top: 32px;
+        padding-bottom: 32px;
 
-        @include breakpoint-large {
-          padding: 32px 0;
-        }
-  
         li {
           padding: 12px 24px;
   
@@ -544,7 +545,7 @@ header {
       @include breakpoint-large {
         position: absolute;
         top: -148px;
-        right: 0;
+        right: 32;
         border-bottom: 8px solid $nav-red;
         border-bottom-right-radius: 8px;
         border-bottom-left-radius: 8px;
@@ -674,7 +675,7 @@ header {
     .main {
       display: block;
       position: absolute;
-      inset: 74px 0 0;
+      inset: 73px 0 0;
 
       @include breakpoint-large {
         display: block;
@@ -688,6 +689,12 @@ header {
 
       &__link[aria-expanded="true"] {
         color: $nav-red;
+      }
+
+      &__flyout {
+        @include breakpoint-large {
+          border-bottom: 8px solid $nav-red;
+        }
       }
     }
 
