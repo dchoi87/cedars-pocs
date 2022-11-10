@@ -99,7 +99,8 @@ header {
       display: flex;
       justify-content: space-between;
       gap: 30px;
-      // padding: 15px;
+      padding-top: 22px;
+      padding-bottom: 22px;
 
       @include breakpoint-large {
         flex-flow: unset;
@@ -114,7 +115,7 @@ header {
       }
 
       img {
-        width: 100px;
+        width: 89px;
 
         @include breakpoint-large {
           width: 115px;
@@ -555,7 +556,7 @@ header {
     &__toolbar {
       @include flex-align-center;
       justify-content: space-between;
-      padding: 15px 20px;
+      padding: 15px 24px;
       border-bottom: 1px solid #191919;
       background: $nav-black;
       color: $nav-white;
@@ -577,22 +578,22 @@ header {
     }
 
     &__header {
-      padding: 20px;
+      padding: 32px 24px 24px;
     }
 
     &__grid {
       display: grid;
-      row-gap: 5px;
-      column-gap: 50px;
+      column-gap: 24px;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(6, 1fr);
       grid-auto-flow: column;
-      padding: 0 30px 20px;
+      padding: 0 24px 32px;
+      min-width: 349px;
 
       a {
         @include flex-align-center;
         gap: 10px;
-        padding: 10px;
+        padding: 20px 24px;
 
         &.active {
           color: $nav-red;
@@ -673,7 +674,7 @@ header {
     .main {
       display: block;
       position: absolute;
-      inset: 63px 0 0;
+      inset: 74px 0 0;
 
       @include breakpoint-large {
         display: block;
