@@ -227,7 +227,7 @@ header {
 
     &__mobile-header {
       @include header-font;
-      margin: 30px;
+      margin: 24px 32px;
 
       @include breakpoint-large {
         display: none;
@@ -236,7 +236,7 @@ header {
 
     &__nav {
       flex-grow: 1;
-      padding: 0 50px 30px;
+      padding: 0 48px 32px;
 
       @include breakpoint-large {
         padding: 0;
@@ -246,7 +246,7 @@ header {
     &__links {
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 24px;
       height: 100%;
       font-size: 18px;
 
@@ -288,9 +288,9 @@ header {
     &__utility {
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 24px;
       background: $nav-beige;
-      padding: 30px 50px;
+      padding: 24px 48px;
 
       @include breakpoint-large {
         display: none;
@@ -309,7 +309,7 @@ header {
     &__phone-lang {
       @include flex-align-center;
       justify-content: space-between;
-      padding: 15px 30px;
+      padding: 16px 32px;
 
       @include breakpoint-large {
         display: none;
@@ -558,7 +558,7 @@ header {
     &__toolbar {
       @include flex-align-center;
       justify-content: space-between;
-      padding: 15px 24px;
+      padding: 16px 24px;
       border-bottom: 1px solid #191919;
       background: $nav-black;
       color: $nav-white;
@@ -580,23 +580,37 @@ header {
     }
 
     &__header {
-      padding: 32px 24px 24px;
+      padding: 24px;
+      
+      @include breakpoint-large {
+        padding: 32px 24px 24px;
+      }
     }
 
     &__grid {
       display: grid;
-      column-gap: 24px;
+      gap: 8px;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(6, 1fr);
       grid-auto-flow: column;
-      padding: 0 24px 32px;
+      padding: 0 24px 24px;
       min-width: 349px;
+
+      @include breakpoint-large {
+        gap: 0 24px;
+        padding: 0 24px 32px;
+      }
 
       a {
         @include flex-align-center;
         gap: 10px;
-        height: 64px;
-        padding: 0 24px;
+        height: 48px;
+        padding: 0 16px;
+
+        @include breakpoint-large {
+          height: 64px;
+          padding: 0 24px;
+        }
 
         &.active {
           color: $nav-red;

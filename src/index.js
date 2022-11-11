@@ -89,9 +89,11 @@ document.querySelector(".utility__menu-btn").addEventListener("click", function 
 });
 document.querySelectorAll(".main__link").forEach(function (el) {
   el.addEventListener("click", function (event) {
-    if (isMobile) return;
-    event.preventDefault();
-    nav().expandMenu(event.target);
+    console.log(event.target.ariaExpanded)
+    if (!isMobile && event.target.ariaExpanded) {
+      event.preventDefault();
+      nav().expandMenu(event.target);
+    }
   });
 });
 document.querySelectorAll(".main__close-btn").forEach(function (el) {
