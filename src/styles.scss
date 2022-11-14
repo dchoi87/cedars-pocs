@@ -167,6 +167,10 @@ header {
       font-size: 13px;
     }
 
+    &__phone {
+      white-space: nowrap;
+    }
+
     &__language {
       @include flex-align-center;
       gap: 5px;
