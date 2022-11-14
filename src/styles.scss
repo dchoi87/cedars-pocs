@@ -291,8 +291,8 @@ header {
 
     &__search-btn {
       .icon-search {
-        width: 24px;
-        height: 24px;
+        width: 21px;
+        height: 21px;
       }
     }
 
@@ -378,26 +378,28 @@ header {
       gap: $spacing-sm;
     }
 
-    &__column {
+    &__column--cta {
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: auto;
+    }
 
-      &--cta {
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: auto;
+    &__cta {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-xs;
 
-        img {
-          width: 100%;
-          height: auto;
-          border-radius: 10px;
-          margin-bottom: $spacing-xs;
-        }
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
 
-        span {
-          @include link;
+      span {
+        @include link;
 
-          svg {
-            fill: $nav-red;
-          }
+        svg {
+          fill: $nav-red;
         }
       }
     }
@@ -472,13 +474,13 @@ header {
         padding-top: $spacing-sm;
 
         @include breakpoint-large {
-          padding-top: 13px;
-          padding-bottom: 13px;
+          padding-top: 12px;
+          padding-bottom: 12px;
         }
       }
 
       &-input {
-        padding: 20px $spacing-sm;
+        padding: 19px $spacing-sm;
         border: 1px solid #ccc;
         border-right: none;
         border-top-left-radius: 10px;
@@ -521,11 +523,14 @@ header {
 
       &-results {
         @include container-width;
-        padding-top: $spacing-md;
-        padding-bottom: $spacing-md;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-sm;
+        padding-top: $spacing-sm;
+        padding-bottom: $spacing-sm;
 
         li {
-          padding: 12px $spacing-sm;
+          padding: 0 $spacing-sm;
   
           &:hover {
             background: transparent;
@@ -556,8 +561,8 @@ header {
 
       @include breakpoint-large {
         position: absolute;
-        top: -148px;
-        right: 32;
+        top: -141px;
+        right: 0;
         border-bottom: 8px solid $nav-red;
         border-bottom-right-radius: 8px;
         border-bottom-left-radius: 8px;
@@ -569,10 +574,14 @@ header {
     &__toolbar {
       @include flex-align-center;
       justify-content: space-between;
-      padding: $spacing-xs $spacing-sm;
+      padding: $spacing-xs $spacing-md;
       border-bottom: 1px solid $nav-black;
       background: $nav-black;
       color: $nav-white;
+
+      @include breakpoint-large {
+        padding: $spacing-xs $spacing-sm;
+      }
     }
 
     &__selected {
@@ -591,7 +600,7 @@ header {
     }
 
     &__header {
-      padding: $spacing-sm;
+      padding: $spacing-sm $spacing-md;
       
       @include breakpoint-large {
         padding: $spacing-md $spacing-sm $spacing-sm;
@@ -604,7 +613,7 @@ header {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(6, 1fr);
       grid-auto-flow: column;
-      padding: 0 $spacing-sm $spacing-sm;
+      padding: 0 $spacing-md $spacing-sm;
       min-width: 349px;
 
       @include breakpoint-large {
