@@ -8,6 +8,8 @@ body {
   }
 }
 
+@import "font-face";
+
 // variables
 $nav-white: #fff;
 $nav-black: #191919;
@@ -54,14 +56,14 @@ $spacing-lg: 48px;
 }
 
 @mixin default-font {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'NunitoSans';
   font-weight: 600;
   letter-spacing: 0.025em;
   color: $nav-black;
 }
 
 @mixin header-font {
-  font-family: 'Lora', serif;
+  font-family: 'GT Super';
   color: $nav-black;
 }
 
