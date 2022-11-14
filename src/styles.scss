@@ -13,6 +13,7 @@ $nav-white: #fff;
 $nav-black: #191919;
 $nav-gray: #707078;
 $nav-gray-light: #e8e8e8;
+$nav-gray-extra-light: #f7f7f5;
 $nav-red: #dc1e34;
 $nav-beige: #dcd8d4;
 $spacing-xs: 16px;
@@ -92,7 +93,7 @@ header {
 
   .utility {
     border-bottom: 1px solid $nav-gray-light;
-    background: #fff;
+    background: $nav-white;
     position: relative;
     z-index: 1;
 
@@ -325,7 +326,7 @@ header {
     }
 
     &__flyout {
-      background: #fff;
+      background: $nav-white;
       position: absolute;
       top: 85px;
       left: 0;
@@ -480,7 +481,7 @@ header {
         border-right: none;
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
-        background: #f7f7f5;
+        background: $nav-gray-extra-light;
       }
 
       &-button {
@@ -488,7 +489,7 @@ header {
         border-left: none;
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
-        background: #f7f7f5;
+        background: $nav-gray-extra-light;
 
         &:focus {
           background: $nav-gray-light;
@@ -567,7 +568,7 @@ header {
       @include flex-align-center;
       justify-content: space-between;
       padding: $spacing-xs $spacing-sm;
-      border-bottom: 1px solid #191919;
+      border-bottom: 1px solid $nav-black;
       background: $nav-black;
       color: $nav-white;
     }
