@@ -71,10 +71,12 @@ class Navigation {
     console.table(data);
   }
 }
+
 // class alias
 var nav = function () {
   return new Navigation();
 };
+
 // event listeners
 document.querySelector(".main__search-btn").addEventListener("click", function () {
   nav().expandSearch();
@@ -132,19 +134,16 @@ document.addEventListener("click", function(event) {
 
   if (!event.target.closest(".main__search-btn, .utility__search-btn, .yxt-SearchBar-input, .yxt-SearchBar-autocomplete")) {
     if (search) {
-      console.log("outside click - search");
       nav().closeSearch();
     }
   }
   if (!event.target.closest(".main, .utility") && !isMobile) {
     if (menu) {
-      console.log("outside click - menu");
       nav().closeMenu();
     }
   }
   if (!event.target.closest(".utility__language, .language")) {
     if (language) {
-      console.log("outside click - language");
       nav().closeLanguageMenu();
     }
   }
