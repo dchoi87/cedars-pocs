@@ -57,6 +57,7 @@ $spacing-lg: 48px;
 
 @mixin default-font {
   font-family: 'NunitoSans';
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.025em;
   color: $nav-black;
@@ -64,6 +65,7 @@ $spacing-lg: 48px;
 
 @mixin header-font {
   font-family: 'GT Super';
+  font-size: 42px;
   color: $nav-black;
 }
 
@@ -132,6 +134,7 @@ header {
 
     &__nav {
       @include flex-align-center;
+      gap: 32px;
       justify-content: space-between;
       width: 100%;
       display: none;
@@ -146,7 +149,6 @@ header {
       gap: $spacing-md;
       height: 100%;
       color: $nav-gray;
-      font-size: 16px;
     }
 
     &__link {
@@ -350,7 +352,6 @@ header {
 
     &__title {
       @include header-font;
-      font-size: 42px;
     }
 
     &__close {
@@ -720,11 +721,17 @@ header {
       }
 
       &__section[data-expanded="true"] {
-        display: block;
+
+        @include breakpoint-large {
+          display: block;
+        }
       }
 
       &__link[aria-expanded="true"] {
-        color: $nav-red;
+
+        @include breakpoint-large {
+          color: $nav-red;
+        }
       }
 
       &__flyout {
@@ -747,6 +754,17 @@ header {
     @include breakpoint-large {
       .overlay {
         display: block;
+      }
+    }
+
+    &.mobile {
+      @include breakpoint-large {
+        .main__flyout {
+          border-bottom: 0;
+        }
+        .overlay {
+          display: none;
+        }
       }
     }
   }

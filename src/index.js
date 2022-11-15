@@ -21,6 +21,11 @@ class Navigation {
     var section = this.header.querySelector(`.main__section[data-id="${target.dataset.id}"]`);
 
     this.header.classList.add("menu-expanded");
+
+    if (isMobile) {
+      this.header.classList.add("mobile");
+    }
+
     if (section) {
       this.resetExpandedState();
       section.setAttribute("data-expanded", true);
@@ -29,6 +34,7 @@ class Navigation {
   }
   closeMenu () {
     this.header.classList.remove("menu-expanded");
+    this.header.classList.remove("mobile");
     this.resetExpandedState();
   }
   resetExpandedState () {
@@ -89,7 +95,6 @@ document.querySelector(".utility__menu-btn").addEventListener("click", function 
 });
 document.querySelectorAll(".main__link").forEach(function (el) {
   el.addEventListener("click", function (event) {
-    console.log(event.target.ariaExpanded)
     if (!isMobile && event.target.ariaExpanded) {
       event.preventDefault();
       nav().expandMenu(event.target);
