@@ -3,7 +3,7 @@ class Navigation {
     this.header = document.querySelector("header");
     this.searchInput = this.header.querySelector(".yxt-SearchBar-input");
     this.searchBtn = this.header.querySelector(".main__search-btn");
-    this.sectionExpanded = this.header.querySelector(".main__section[data-expanded='true']");
+    this.flyoutExpanded = this.header.querySelector(".main__flyout[data-expanded='true']");
     this.mainAnchorActive = this.header.querySelector(".main__link[aria-expanded='true']");
     this.language = this.header.querySelector(".language");
     this.languageBtn = this.header.querySelector(".utility__language");
@@ -17,10 +17,10 @@ class Navigation {
   }
   closeSearch () {
     this.header.classList.remove("search-expanded");
-    this.searchBtn.focus();
+    // this.searchBtn.focus();
   }
   expandMenu (target) {
-    var section = this.header.querySelector(`.main__section[data-id="${target.dataset.id}"]`);
+    var section = this.header.querySelector(`.main__flyout[data-id="${target.dataset.id}"]`);
 
     this.header.classList.add("menu-expanded");
     if (isMobile) {
@@ -31,25 +31,25 @@ class Navigation {
       section.setAttribute("data-expanded", true);
       target.setAttribute("aria-expanded", true);
     }
-    section.querySelector("a").focus();
+    // section.querySelector("a").focus();
   }
   closeMenu () {
     this.header.classList.remove("menu-expanded");
     this.header.classList.remove("mobile");
     this.resetExpandedState();
-    this.mainAnchorActive.focus();
+    // this.mainAnchorActive.focus();
   }
   resetExpandedState () {
-    this.sectionExpanded && this.sectionExpanded.setAttribute("data-expanded", false);
+    this.flyoutExpanded && this.flyoutExpanded.setAttribute("data-expanded", false);
     this.mainAnchorActive && this.mainAnchorActive.setAttribute("aria-expanded", false);
   }
   expandLanguageMenu () {
     this.header.classList.add("language-expanded");
-    this.language.querySelector("a").focus();
+    // this.language.querySelector("a").focus();
   }
   closeLanguageMenu () {
     this.header.classList.remove("language-expanded");
-    this.languageBtn.focus();
+    // this.languageBtn.focus();
   }
   getDataAttr () {
     var array = Array.from(document.querySelectorAll("header a, header button"));

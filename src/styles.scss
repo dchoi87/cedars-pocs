@@ -262,24 +262,27 @@ header {
     }
 
     &__nav {
-      flex-grow: 1;
-      padding: 0 $spacing-lg $spacing-md;
-
-      @include breakpoint-large {
-        padding: 0;
-      }
-    }
-
-    &__links {
       display: flex;
       flex-direction: column;
       gap: $spacing-sm;
       height: 100%;
       font-size: 18px;
+      flex-grow: 1;
+      padding: 0 $spacing-lg $spacing-md;
 
       @include breakpoint-large {
         flex-direction: unset;
         gap: $spacing-lg;
+        padding: 0;
+      }
+    }
+
+    &__nav-item {
+
+      @include breakpoint-large {
+        &:first-of-type {
+          display: none;
+        }
       }
     }
 
@@ -292,16 +295,6 @@ header {
 
       svg {
         fill: $nav-red;
-      }
-
-      &--mobile {
-        &:hover {
-          color: $nav-red;
-        }
-
-        @include breakpoint-large {
-          display: none;
-        }
       }
     }
 
@@ -344,16 +337,16 @@ header {
     }
 
     &__flyout {
+      display: none;
       background: $nav-white;
       position: absolute;
-      top: 85px;
+      top: 88px;
       left: 0;
       right: 0;
     }
     
     &__section {
       @include container-width;
-      display: none;
     }
 
     &__header {
@@ -368,10 +361,9 @@ header {
       @include header-font;
     }
 
-    &__close {
-      button {
-        @include link;
-      }
+    &__close-btn {
+      @include link;
+      font-size: 16px;
     }
 
     &__search {
@@ -425,6 +417,10 @@ header {
       grid-template-rows: repeat(6, 1fr);
       grid-auto-flow: column;
       gap: $spacing-md $spacing-sm;
+
+      & a {
+        font-size: 16px;
+      }
     }
   }
 
@@ -734,7 +730,7 @@ header {
         inset: auto;
       }
 
-      &__section[data-expanded="true"] {
+      &__flyout[data-expanded="true"] {
 
         @include breakpoint-large {
           display: block;
