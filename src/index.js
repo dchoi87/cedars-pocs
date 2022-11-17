@@ -1,3 +1,6 @@
+/**
+ * navigation methods
+ */
 class Navigation {
   constructor () {
     this.header = document.querySelector("header");
@@ -64,16 +67,21 @@ class Navigation {
   }
 }
 
-// class alias
+/**
+ * alias
+ */
 var nav = function () {
   return new Navigation();
 };
 
-// event listeners
+/**
+ * event listeners
+ */
+// main search
 document.querySelector(".main__search-btn").addEventListener("click", function () {
   nav().expandSearch();
 });
-
+// mobile search
 document.querySelector(".utility__search-btn").addEventListener("click", function () {
   var header = document.querySelector("header");
 
@@ -83,7 +91,7 @@ document.querySelector(".utility__search-btn").addEventListener("click", functio
     nav().expandSearch();
   }
 });
-
+// hamburger menu
 document.querySelector(".utility__menu-btn").addEventListener("click", function (event) {
   var header = document.querySelector("header");
   
@@ -95,7 +103,7 @@ document.querySelector(".utility__menu-btn").addEventListener("click", function 
     this.setAttribute("aria-label", "Close Button");
   }
 });
-
+// main links
 document.querySelectorAll(".main__link").forEach(function (el) {
   el.addEventListener("click", function (event) {
     if (!isMobile && event.target.ariaExpanded) {
@@ -104,23 +112,23 @@ document.querySelectorAll(".main__link").forEach(function (el) {
     }
   });
 });
-
+// flyout close
 document.querySelectorAll(".main__close-btn").forEach(function (el) {
   el.addEventListener("click", function () {
     nav().closeMenu();
   });
 });
-
+// language select
 document.querySelectorAll(".utility__language").forEach(function (el) {
   el.addEventListener("click", function () {
     nav().expandLanguageMenu();
   });
 });
-
+// language close
 document.querySelector(".language__close-btn").addEventListener("click", function () {
   nav().closeLanguageMenu();
 });
-
+// close on outside click
 document.addEventListener("click", function(event) {
   var search = document.querySelector(".search-expanded");
   var language = document.querySelector(".language-expanded");
@@ -142,7 +150,7 @@ document.addEventListener("click", function(event) {
     }
   }
 });
-
+// close on escape
 document.addEventListener("keydown", function(event) {
   var search = document.querySelector(".search-expanded");
   var language = document.querySelector(".language-expanded");
@@ -160,7 +168,7 @@ document.addEventListener("keydown", function(event) {
     }
   }
 });
-
+// window resize
 var isMobile = window.innerWidth < 768;
 window.addEventListener("resize", function() {
   isMobile = window.innerWidth < 768;
