@@ -2,11 +2,8 @@ class Navigation {
   constructor () {
     this.header = document.querySelector("header");
     this.searchInput = this.header.querySelector(".yxt-SearchBar-input");
-    this.searchBtn = this.header.querySelector(".main__search-btn");
     this.flyoutExpanded = this.header.querySelector(".main__flyout[data-expanded='true']");
     this.mainAnchorActive = this.header.querySelector(".main__link[aria-expanded='true']");
-    this.language = this.header.querySelector(".language");
-    this.languageBtn = this.header.querySelector(".utility__language");
   }
   expandSearch () {
     if (this.header.matches(".menu-expanded")) {
@@ -17,7 +14,6 @@ class Navigation {
   }
   closeSearch () {
     this.header.classList.remove("search-expanded");
-    // this.searchBtn.focus();
   }
   expandMenu (target) {
     var section = this.header.querySelector(`.main__flyout[data-id="${target.dataset.id}"]`);
@@ -31,13 +27,11 @@ class Navigation {
       section.setAttribute("data-expanded", true);
       target.setAttribute("aria-expanded", true);
     }
-    // section.querySelector("a").focus();
   }
   closeMenu () {
     this.header.classList.remove("menu-expanded");
     this.header.classList.remove("mobile");
     this.resetExpandedState();
-    // this.mainAnchorActive.focus();
   }
   resetExpandedState () {
     this.flyoutExpanded && this.flyoutExpanded.setAttribute("data-expanded", false);
@@ -45,11 +39,9 @@ class Navigation {
   }
   expandLanguageMenu () {
     this.header.classList.add("language-expanded");
-    // this.language.querySelector("a").focus();
   }
   closeLanguageMenu () {
     this.header.classList.remove("language-expanded");
-    // this.languageBtn.focus();
   }
   getDataAttr () {
     var array = Array.from(document.querySelectorAll("header a, header button"));
@@ -97,8 +89,10 @@ document.querySelector(".utility__menu-btn").addEventListener("click", function 
   
   if (header.matches(".menu-expanded")) {
     nav().closeMenu();
+    this.setAttribute("aria-label", "Menu Button");
   } else {
     nav().expandMenu(event.target);
+    this.setAttribute("aria-label", "Close Button");
   }
 });
 
