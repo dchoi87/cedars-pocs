@@ -289,7 +289,8 @@ header {
     &__link {
       @include link;
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: $nav-red;
       }
 
@@ -396,6 +397,11 @@ header {
       flex-direction: column;
       gap: $spacing-xs;
 
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+
       img {
         width: 100%;
         height: auto;
@@ -421,6 +427,12 @@ header {
 
       & a {
         font-size: 16px;
+
+        &:hover,
+        &:focus {
+          color: inherit;
+          text-decoration: underline;
+        }
       }
     }
   }
