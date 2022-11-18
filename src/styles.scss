@@ -707,10 +707,6 @@ header {
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
         background: $nav-gray-extra-light;
-
-        &:focus {
-          background: $nav-gray-light;
-        }
       }
 
       &-buttonImage {
@@ -744,7 +740,17 @@ header {
 
         li {
           padding: 0 $spacing-sm;
-  
+          position: relative;
+          @include focus-animation;
+
+          &.yxt-selected {
+            &::before {
+              animation-name: focus-ring-show;
+              opacity: 1;
+              transition: ease-in opacity 0s;
+            }
+          }
+
           &.yxt-selected,
           &:hover,
           &:focus {

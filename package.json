@@ -5,7 +5,7 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx parcel src/index.html",
+    "start": "rm -rf dist && npx parcel src/index.html",
     "build": "npx parcel build src/index.html",
     "predeploy": "rm -rf dist && npx parcel build src/index.html --no-source-maps --public-url ./",
     "deploy": "gh-pages -d dist"
