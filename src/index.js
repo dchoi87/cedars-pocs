@@ -133,10 +133,14 @@ document.querySelectorAll(".language__grid a").forEach(function (el) {
   el.addEventListener("click", function () {
     var languageHeader = document.querySelector(".language__selected span");
     var utilityHeader = document.querySelector(".utility__language span");
+    var active = document.querySelector(".language__grid a.active");
 
     doGTranslate(this.dataset.id);
     languageHeader.innerText = this.innerText;
     utilityHeader.innerText = this.innerText;
+
+    active.classList.remove("active");
+    this.classList.add("active");
   });
 });
 // close on outside click
