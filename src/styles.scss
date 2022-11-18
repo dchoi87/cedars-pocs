@@ -17,6 +17,7 @@ $nav-gray: #707078;
 $nav-gray-light: #e8e8e8;
 $nav-gray-extra-light: #f7f7f5;
 $nav-red: #dc1e34;
+$nav-red-dark: #c6002b;
 $nav-beige: #dcd8d4;
 $nav-violet-light: #8666ac;
 $spacing-xs: 16px;
@@ -58,8 +59,8 @@ $spacing-lg: 48px;
 
   svg {
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -170,7 +171,10 @@ header {
       height: 100%;
 
       &:hover,
-      &:focus,
+      &:focus {
+        color: $nav-black;
+      }
+
       &:first-of-type {
         color: $nav-black;
         
@@ -197,6 +201,7 @@ header {
     &__language {
       @include flex-align-center;
       gap: 5px;
+      font-weight: 600;
     }
 
     &__mobile-nav {
@@ -255,6 +260,7 @@ header {
     &__mobile-header {
       @include header-font;
       margin: $spacing-sm $spacing-md;
+      font-weight: 400;
 
       @include breakpoint-large {
         display: none;
@@ -288,6 +294,11 @@ header {
 
     &__link {
       @include link;
+      font-weight: 400;
+
+      @include breakpoint-large {
+        font-weight: 600;
+      }
 
       &:hover,
       &:focus {
@@ -301,8 +312,8 @@ header {
 
     &__search-btn {
       .icon-search {
-        width: 21px;
-        height: 21px;
+        width: 32px;
+        height: 32px;
       }
     }
 
@@ -320,6 +331,8 @@ header {
       &-link {
         @include flex-align-center;
         justify-content: space-between;
+        font-size: 18px;
+        font-weight: 400;
 
         svg {
           fill: $nav-black;
@@ -341,7 +354,7 @@ header {
       display: none;
       background: $nav-white;
       position: absolute;
-      top: 88px;
+      top: 96px;
       left: 0;
       right: 0;
     }
@@ -360,18 +373,20 @@ header {
 
     &__title {
       @include header-font;
+      font-weight: 400;
     }
 
     &__close-btn {
       @include link;
       font-size: 16px;
+      font-weight: 600;
     }
 
     &__search {
       display: none;
 
       @include breakpoint-large {
-        display: unset;
+        display: flex;
       }
 
       svg {
@@ -427,12 +442,6 @@ header {
 
       & a {
         font-size: 16px;
-
-        &:hover,
-        &:focus {
-          color: inherit;
-          text-decoration: underline;
-        }
       }
     }
   }
@@ -504,12 +513,24 @@ header {
       }
 
       &-input {
-        padding: 19px $spacing-sm;
+        padding: 19px 16px;
         border: 1px solid #ccc;
         border-right: none;
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
         background: $nav-gray-extra-light;
+
+        @include breakpoint-large {
+          padding-left: $spacing-sm;
+          padding-right: $spacing-sm;
+        }
+
+        &::placeholder {
+          @include default-font;
+          font-size: 14px;
+          font-weight: 400;
+          color: #727588;
+        }
       }
 
       &-button {
@@ -551,7 +572,7 @@ header {
         flex-direction: column;
         gap: $spacing-sm;
         padding-top: $spacing-sm;
-        padding-bottom: $spacing-sm;
+        padding-bottom: 64px;
 
         li {
           padding: 0 $spacing-sm;
@@ -560,6 +581,16 @@ header {
             background: transparent;
           }
         }
+      }
+    }
+
+    .Icon-image {
+      width: 24px;
+      height: 24px;
+
+      @include breakpoint-large {
+        width: 32px;
+        height: 32px;
       }
     }
   }
@@ -652,6 +683,8 @@ header {
         gap: 10px;
         height: 48px;
         padding: 0 $spacing-xs;
+        font-size: 18px;
+        font-weight: 400;
 
         @include breakpoint-large {
           height: 64px;
@@ -755,7 +788,7 @@ header {
       &__link[aria-expanded="true"] {
 
         @include breakpoint-large {
-          color: $nav-red;
+          color: $nav-red-dark;
         }
       }
 
