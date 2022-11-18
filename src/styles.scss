@@ -589,6 +589,7 @@ header {
 
       span {
         @include link;
+        gap: 0;
         font-size: 16px;
 
         svg {
