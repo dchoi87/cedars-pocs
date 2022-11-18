@@ -134,11 +134,11 @@ document.querySelectorAll(".language__grid a").forEach(function (el) {
     var languageHeader = document.querySelector(".language__selected span");
     var utilityHeader = document.querySelector(".utility__language span");
     var active = document.querySelector(".language__grid a.active");
-
+    // translate
     doGTranslate(this.dataset.id);
     languageHeader.innerText = this.innerText;
     utilityHeader.innerText = this.innerText;
-
+    // active class
     active.classList.remove("active");
     this.classList.add("active");
   });
@@ -188,3 +188,64 @@ var isMobile = window.innerWidth < 768;
 window.addEventListener("resize", function() {
   isMobile = window.innerWidth < 768;
 });
+// translations - pulled from translations.js
+var $selectedTranslation = $(".language__selected span");
+var $translationBtnLabel = $(".utility__language span");
+
+function getParameterByName(name, url) {
+  if (!url) {
+    url = window.location.href;
+  }
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+    results = regex.exec(url);
+  if (!results) {
+    return null;
+  }
+  if (!results[2]) {
+    return '';
+  }
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+function readCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1, c.length);
+    }
+    if (c.indexOf(nameEQ) == 0) {
+      return c.substring(nameEQ.length, c.length);
+    }
+  }
+  return null;
+}
+function getTransLabel(transCode) {
+  var st = '.language__grid a[data-id="' + transCode + '"]';
+  var $selectedText = $(st);
+  var selectedText = '';
+  $selectedText.each(function(){
+    selectedText = $(this).text();
+  });
+  return selectedText;
+}
+
+$(function() {
+  var urlTrans = getParameterByName('trans');
+  if(urlTrans) {
+    var trans = 'en|' + urlTrans;
+    doGTranslate(trans);
+    $selectedTranslation.text(getTransLabel(trans));
+  } else {
+    var googletrans = readCookie("googtrans");
+    if(googletrans) {
+      var transArr = googletrans.split('/');
+      if(transArr.length > 1) {
+        var tr = "en|" + transArr[transArr.length - 1];
+        $selectedTranslation.text(getTransLabel(tr));
+        $translationBtnLabel.text(getTransLabel(tr));
+      }
+    }
+  }
+})

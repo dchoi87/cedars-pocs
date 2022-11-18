@@ -6,7 +6,6 @@
     <title>Cedars Navigation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://assets.sitescdn.net/answers-search-bar/v1.0/answers.css" />
     <link rel="stylesheet" href="./styles.scss" />
   </head>
   <body>
@@ -41,7 +40,6 @@
             <div class="utility__links">
               <a href="https://www.cedars-sinai.org/patients-visitors.html" class="utility__link active" data-dm-event="site interaction" data-dm-category="header utility nav" data-dm-type="link" data-dm-value="Browse Patients and Visitors">For Patients</a>
               <a href="https://www.cedars-sinai.org/med-pros.html" class="utility__link" data-dm-event="site interaction" data-dm-category="header utility nav" data-dm-type="link" data-dm-value="For medical professionals and referring patients to Cedars-Sinai.">For Providers</a>
-              <a href="https://www.cedars-sinai.org/community.html" class="utility__link" data-dm-event="site interaction" data-dm-category="header utility nav" data-dm-type="link" data-dm-value="Community Partners with Cedars-Sinai.">Community Health</a>
               <a href="https://www.cedars-sinai.org/research.html" class="utility__link" data-dm-event="site interaction" data-dm-category="header utility nav" data-dm-type="link" data-dm-value="Research">Research &amp; Institutes</a>
               <a href="https://www.cedars-sinai.edu/education.html" class="utility__link" data-dm-event="site interaction" data-dm-category="header utility nav" data-dm-type="link" data-dm-value="Education at Cedars-Sinai">Academics</a>
             </div>
@@ -254,18 +252,12 @@
               </div>
             </div>
             <div class="main__nav-item">
-              <a href="https://www.cedars-sinai.org/mycslink.html" class="main__link" data-dm-event="site interaction" data-dm-category="header container" data-dm-type="link" data-dm-value="My CS-Link">My CS-Link</a>
+              <a href="https://www.cedars-sinai.org/mycslink.html" class="main__link" data-dm-event="site interaction" data-dm-category="header container" data-dm-type="link" data-dm-value="My CS-Link">Sign In</a>
             </div>
           </div>
           <div class="main__utility">
             <a href="https://www.cedars-sinai.org/med-pros.html" class="main__utility-link" data-dm-event="site interaction" data-dm-category="header utility nav" data-dm-type="link" data-dm-value="For medical professionals and referring patients to Cedars-Sinai.">
               For Providers
-              <svg class="icon-arrow">
-                <use xlink:href="#icon-arrow"></use>
-              </svg>
-            </a>
-            <a href="https://www.cedars-sinai.org/community.html" class="main__utility-link" data-dm-event="site interaction" data-dm-category="header utility nav" data-dm-type="link" data-dm-value="Community Partners with Cedars-Sinai.">
-              Community Health
               <svg class="icon-arrow">
                 <use xlink:href="#icon-arrow"></use>
               </svg>
@@ -303,7 +295,7 @@
       </div>
       <!-- search -->
       <div class="search">
-        <div class="search-bar"></div>
+        <div class="search-bar" data-answers-config='{"customIconUrl": "./Arrow_Right.svg", "clearButton": false}'></div>
       </div>
       <!-- overlay -->
       <div class="overlay"></div>
@@ -311,35 +303,10 @@
     <div class="hero-banner">
       <img src="https://picsum.photos/id/316/1600/800" alt="placeholder" />
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="./index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/loadjs/4.2.0/loadjs.min.js" integrity="sha512-kA5njTcOKIwpz6cEPl//I31UH3ivohgL+WSVjdO/iMQWbuzHqxuAdPjRvLEHXTa+M/4AtZNMI6aOEvBtOof7Iw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- answers api -->
-    <script src="https://assets.sitescdn.net/answers-search-bar/v1.0/answerstemplates.compiled.min.js"></script>
-    <script>
-      function initAnswers () {
-        ANSWERS.init({
-          apiKey: "beae47b088a08a60bd3f7192c6e18228",
-          businessId: "3586571",
-          experienceVersion: "PRODUCTION",
-          locale: "en",
-          experienceKey: "cedars-sinai-answers",
-          templateBundle: TemplateBundle.default,
-          onReady: function () {
-            // init components
-            this.addComponent("SearchBar", {
-              container: ".search-bar",
-              name: "search_form",
-              redirectUrl: "/search.html",
-              placeholderText: 'Search by Keyword, Symptom, or Condition',
-              customIconUrl: './Arrow_Right.svg',
-              clearButton: false
-            });
-          }
-        });
-      }
-    </script>
-    <script
-      src="https://assets.sitescdn.net/answers-search-bar/v1.0/answers.min.js" onload="ANSWERS.domReady(initAnswers)" async defer></script>
+    <script src="./answers-loader.js"></script>
     <!-- google translate -->
     <script type="text/javascript">
       function googleTranslateElementInit2() {new google.translate.TranslateElement({pageLanguage: 'en',autoDisplay: false}, 'google_translate_element2');}
