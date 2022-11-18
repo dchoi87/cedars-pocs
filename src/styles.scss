@@ -542,6 +542,10 @@ header {
           font-size: 14px;
           font-weight: 400;
           color: #727588;
+
+          @include breakpoint-large {
+            font-size: 16px;
+          }
         }
       }
 
