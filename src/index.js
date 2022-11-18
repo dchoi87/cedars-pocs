@@ -106,9 +106,9 @@ document.querySelector(".utility__menu-btn").addEventListener("click", function 
 // main links
 document.querySelectorAll(".main__link").forEach(function (el) {
   el.addEventListener("click", function (event) {
-    if (!isMobile && event.target.ariaExpanded) {
+    if (!isMobile && event.currentTarget.ariaExpanded) {
       event.preventDefault();
-      nav().expandMenu(event.target);
+      nav().expandMenu(event.currentTarget);
     }
   });
 });
@@ -118,7 +118,7 @@ document.querySelectorAll(".main__close-btn").forEach(function (el) {
     nav().closeMenu();
   });
 });
-// language select
+// language modal
 document.querySelectorAll(".utility__language").forEach(function (el) {
   el.addEventListener("click", function () {
     nav().expandLanguageMenu();
@@ -127,6 +127,17 @@ document.querySelectorAll(".utility__language").forEach(function (el) {
 // language close
 document.querySelector(".language__close-btn").addEventListener("click", function () {
   nav().closeLanguageMenu();
+});
+// language select
+document.querySelectorAll(".language__grid a").forEach(function (el) {
+  el.addEventListener("click", function () {
+    var languageHeader = document.querySelector(".language__selected span");
+    var utilityHeader = document.querySelector(".utility__language span");
+
+    doGTranslate(this.dataset.id);
+    languageHeader.innerText = this.innerText;
+    utilityHeader.innerText = this.innerText;
+  });
 });
 // close on outside click
 document.addEventListener("click", function(event) {
