@@ -300,13 +300,25 @@ header {
         font-weight: 600;
       }
 
-      &:hover,
-      &:focus {
+      &:hover {
         color: $nav-red;
+      }
+
+      &:focus {
+        color: $nav-red-dark;
       }
 
       svg {
         fill: $nav-red;
+      }
+
+      &--tertiary {
+        &:hover,
+        &:focus {
+          color: $nav-black;
+          text-decoration: underline;
+          text-underline-offset: 5px;
+        }
       }
     }
 
