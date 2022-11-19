@@ -253,6 +253,11 @@ header {
   @include default-font;
   @include normalize;
 
+  .svg-map {
+    width: 0;
+    height: 0;
+  }
+
   .utility {
     border-bottom: 1px solid $nav-gray-light;
     background: $nav-white;
